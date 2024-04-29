@@ -15,7 +15,7 @@ func _physics_process(delta):
 	# Add the gravity.
 	if not is_on_floor():
 		velocity.y += gravity * delta
-
+	
 	if Input.is_action_just_pressed("fast_fall") and not is_on_floor() and velocity.y >= 0:
 		velocity.y += gravity * delta * fast_fall_velocity
 
@@ -34,7 +34,6 @@ func _physics_process(delta):
 		switch_direction(direction)
 
 	move_and_slide()
-	
 	update_animations(direction)
 
 func update_animations(direction):

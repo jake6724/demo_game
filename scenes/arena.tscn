@@ -34,22 +34,22 @@ shape = SubResource("RectangleShape2D_5a5xg")
 [node name="UpperPlatform" type="StaticBody2D" parent="."]
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="UpperPlatform"]
-position = Vector2(203, 176)
+position = Vector2(203, 164)
 scale = Vector2(178, 22)
 mesh = SubResource("QuadMesh_q8w63")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPlatform"]
-position = Vector2(203, 176)
+position = Vector2(203, 164)
 shape = SubResource("RectangleShape2D_p3bmt")
 
 [node name="UpperPlatform2" type="StaticBody2D" parent="."]
 position = Vector2(100, 0)
 
 [node name="MeshInstance2D" type="MeshInstance2D" parent="UpperPlatform2"]
-position = Vector2(331, 176)
+position = Vector2(331, 164)
 scale = Vector2(178, 22)
 mesh = SubResource("QuadMesh_q8w63")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPlatform2"]
-position = Vector2(331, 176)
+position = Vector2(331, 164)
 shape = SubResource("RectangleShape2D_p3bmt")
