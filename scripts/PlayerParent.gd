@@ -2,7 +2,7 @@ extends CharacterBody2D
 class_name PlayerParent
 
 @export var speed = 300.0
-@export var jump_velocity = -400.0
+@export var jump_velocity = -450.0
 @export var fast_fall_velocity = 20
 
 @onready var ap = $AnimationPlayer
