@@ -1,0 +1,55 @@
+[gd_scene load_steps=6 format=3 uid="uid://biq48dea3esk4"]
+
+[ext_resource type="PackedScene" uid="uid://dj2pc1cj8gru3" path="res://scenes/player.tscn" id="1_e25fx"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_f8v71"]
+size = Vector2(500, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a5xg"]
+resource_local_to_scene = true
+size = Vector2(302.439, 23)
+
+[sub_resource type="QuadMesh" id="QuadMesh_q8w63"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3bmt"]
+size = Vector2(178, 22)
+
+[node name="Arena" type="Node2D"]
+
+[node name="Player" parent="." instance=ExtResource("1_e25fx")]
+position = Vector2(320, 82)
+
+[node name="MainPlatform" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="MainPlatform"]
+position = Vector2(308.98, 239.313)
+scale = Vector2(0.991922, 0.4525)
+mesh = SubResource("QuadMesh_f8v71")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MainPlatform"]
+position = Vector2(309, 239.5)
+scale = Vector2(1.64, 1)
+shape = SubResource("RectangleShape2D_5a5xg")
+
+[node name="UpperPlatform" type="StaticBody2D" parent="."]
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UpperPlatform"]
+position = Vector2(203, 176)
+scale = Vector2(178, 22)
+mesh = SubResource("QuadMesh_q8w63")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPlatform"]
+position = Vector2(203, 176)
+shape = SubResource("RectangleShape2D_p3bmt")
+
+[node name="UpperPlatform2" type="StaticBody2D" parent="."]
+position = Vector2(100, 0)
+
+[node name="MeshInstance2D" type="MeshInstance2D" parent="UpperPlatform2"]
+position = Vector2(331, 176)
+scale = Vector2(178, 22)
+mesh = SubResource("QuadMesh_q8w63")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPlatform2"]
+position = Vector2(331, 176)
+shape = SubResource("RectangleShape2D_p3bmt")
