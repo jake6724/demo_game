@@ -1,18 +1,15 @@
-[gd_scene load_steps=18 format=3 uid="uid://d3645lst5mtqr"]
+[gd_scene load_steps=18 format=3 uid="uid://udluj6eeolgk"]
 
-[ext_resource type="Texture2D" uid="uid://cxffg8sehfltx" path="res://assets/textures/free_knight/_Idle.png" id="1_riy2v"]
-[ext_resource type="Texture2D" uid="uid://dp3tti48hn4nr" path="res://assets/textures/free_knight/_Run.png" id="3_t8sqs"]
-[ext_resource type="Texture2D" uid="uid://ce55v5fbrjys5" path="res://assets/textures/free_knight/_Jump.png" id="4_ycpoa"]
-[ext_resource type="Texture2D" uid="uid://b60ygmrf7hmby" path="res://assets/textures/free_knight/_Fall.png" id="5_c8grg"]
-[ext_resource type="Texture2D" uid="uid://ccweiy86dm618" path="res://assets/textures/free_knight/_Dash.png" id="6_l2scg"]
-[ext_resource type="Texture2D" uid="uid://51fiq6ou24u5" path="res://assets/textures/free_knight/_Attack2NoMovement.png" id="7_gtovw"]
-[ext_resource type="Script" path="res://scenes/AnimationPlayer.gd" id="8_082pv"]
+[ext_resource type="Script" path="res://scripts/player_superclass.gd" id="1_cj338"]
+[ext_resource type="Texture2D" uid="uid://cxffg8sehfltx" path="res://assets/textures/free_knight/_Idle.png" id="1_pn11e"]
+[ext_resource type="Texture2D" uid="uid://b8lo3hhcsq8y1" path="res://assets/textures/free_knight/_Dash.png" id="2_rfywk"]
+[ext_resource type="Texture2D" uid="uid://b60ygmrf7hmby" path="res://assets/textures/free_knight/_Fall.png" id="3_c27x0"]
+[ext_resource type="Texture2D" uid="uid://ce55v5fbrjys5" path="res://assets/textures/free_knight/_Jump.png" id="4_h0834"]
+[ext_resource type="Texture2D" uid="uid://dp3tti48hn4nr" path="res://assets/textures/free_knight/_Run.png" id="5_hdnfv"]
+[ext_resource type="Texture2D" uid="uid://bco6ppodhog65" path="res://assets/textures/free_knight/_Attack2NoMovement.png" id="6_x7kqb"]
+[ext_resource type="Script" path="res://scenes/AnimationPlayer.gd" id="7_hdedh"]
 
-[sub_resource type="GDScript" id="GDScript_rrriw"]
-script/source = "extends PlayerParent
-"
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bdimo"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cy0k8"]
 size = Vector2(17, 38)
 
 [sub_resource type="Animation" id="Animation_xdjhu"]
@@ -27,7 +24,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_riy2v")]
+"values": [ExtResource("1_pn11e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -79,7 +76,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("6_l2scg")]
+"values": [ExtResource("2_rfywk")]
 }
 
 [sub_resource type="Animation" id="Animation_2q7rc"]
@@ -97,7 +94,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0.15),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_c8grg")]
+"values": [ExtResource("3_c27x0")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -149,7 +146,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("1_riy2v")]
+"values": [ExtResource("1_pn11e")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -203,7 +200,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_ycpoa")]
+"values": [ExtResource("4_h0834")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -255,7 +252,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_t8sqs")]
+"values": [ExtResource("5_hdnfv")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -307,7 +304,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("7_gtovw")]
+"values": [ExtResource("6_x7kqb")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -357,18 +354,17 @@ _data = {
 "side_tilt": SubResource("Animation_hv3w7")
 }
 
-[node name="Player" type="CharacterBody2D"]
-collision_layer = 2
-script = SubResource("GDScript_rrriw")
+[node name="CharacterBody2D" type="CharacterBody2D"]
+script = ExtResource("1_cj338")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, -40)
-texture = ExtResource("1_riy2v")
+texture = ExtResource("1_pn11e")
 hframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, -19)
-shape = SubResource("RectangleShape2D_bdimo")
+shape = SubResource("RectangleShape2D_cy0k8")
 debug_color = Color(5.29438e-07, 0.642104, 0.32338, 0.42)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -376,4 +372,4 @@ libraries = {
 "": SubResource("AnimationLibrary_kwedl")
 }
 autoplay = "idle"
-script = ExtResource("8_082pv")
+script = ExtResource("7_hdedh")
