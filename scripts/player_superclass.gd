@@ -1,18 +1,26 @@
 extends CharacterBody2D
-class_name PlayerParent
+class_name player_superclass
 
 @export var speed = 300.0
 
 # Character stats
 var jump_counter = 0
 var jump_max = 1
+
 var ground_speed = 300.0 
+
 var air_speed = 200.0
 var jump_velocity = -400.0
 var fast_fall_velocity = 20
 
+var damage = 10.0
+var health = 0.0
+
 # Animation vars 
 var is_attacking = false 
+
+# Signals
+signal health_updated
 
 @onready var ap = $AnimationPlayer
 @onready var sprite = $Sprite2D
@@ -78,5 +86,7 @@ func switch_direction(direction):
 	sprite.flip_h = (direction == -1)
 	sprite.position.x = direction * 4
 	
-func set_attacking_false():
-	is_attacking = false
+func update_health(damage_recieved):
+	health += damage_recieved
+	
+
