@@ -357,6 +357,7 @@ _data = {
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_chftd")
+speed = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, -40)
@@ -374,3 +375,5 @@ libraries = {
 }
 autoplay = "idle"
 script = ExtResource("8_082pv")
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

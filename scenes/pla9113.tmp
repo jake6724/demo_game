@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dj2pc1cj8gru3"]
+[gd_scene load_steps=15 format=3 uid="uid://dj2pc1cj8gru3"]
 
 [ext_resource type="Script" path="res://scripts/player.gd" id="1_chftd"]
 [ext_resource type="Texture2D" uid="uid://cxffg8sehfltx" path="res://assets/textures/free_knight/_Idle.png" id="1_riy2v"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://ce55v5fbrjys5" path="res://assets/textures/free_knight/_Jump.png" id="4_ycpoa"]
 [ext_resource type="Texture2D" uid="uid://b60ygmrf7hmby" path="res://assets/textures/free_knight/_Fall.png" id="5_c8grg"]
 [ext_resource type="Texture2D" uid="uid://ccweiy86dm618" path="res://assets/textures/free_knight/_Dash.png" id="6_l2scg"]
-[ext_resource type="Texture2D" uid="uid://51fiq6ou24u5" path="res://assets/textures/free_knight/_Attack2NoMovement.png" id="7_gtovw"]
-[ext_resource type="Script" path="res://scenes/AnimationPlayer.gd" id="8_082pv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bdimo"]
 size = Vector2(17, 38)
@@ -291,58 +289,6 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_hv3w7"]
-resource_name = "side_tilt"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("7_gtovw")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kwedl"]
 _data = {
 "RESET": SubResource("Animation_xdjhu"),
@@ -350,13 +296,15 @@ _data = {
 "fall": SubResource("Animation_2q7rc"),
 "idle": SubResource("Animation_lstu8"),
 "jump": SubResource("Animation_0x0ja"),
-"run": SubResource("Animation_5f213"),
-"side_tilt": SubResource("Animation_hv3w7")
+"run": SubResource("Animation_5f213")
 }
 
 [node name="Player" type="CharacterBody2D"]
 collision_layer = 2
 script = ExtResource("1_chftd")
+speed = null
+jump_velocity = null
+fast_fall_velocity = null
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, -40)
@@ -373,4 +321,3 @@ libraries = {
 "": SubResource("AnimationLibrary_kwedl")
 }
 autoplay = "idle"
-script = ExtResource("8_082pv")

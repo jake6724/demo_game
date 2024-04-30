@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://hiiqbk3lwffm"
-path="res://.godot/imported/player-run4.png-8fb74758cd3b41560b5504dc1eca88e7.ctex"
+uid="uid://ccweiy86dm618"
+path="res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/player-run4.png"
-dest_files=["res://.godot/imported/player-run4.png-8fb74758cd3b41560b5504dc1eca88e7.ctex"]
+source_file="res://assets/textures/free_knight/_Dash.png"
+dest_files=["res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"]
 
 [params]
 
