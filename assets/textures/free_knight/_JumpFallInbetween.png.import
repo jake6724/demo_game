@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8lo3hhcsq8y1"
-path="res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"
+uid="uid://dggy2shlty3ey"
+path="res://.godot/imported/_JumpFallInbetween.png-1e5fe506fb7df9a9b930c1130abb93a3.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/free_knight/_Dash.png"
-dest_files=["res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"]
+source_file="res://assets/textures/free_knight/_JumpFallInbetween.png"
+dest_files=["res://.godot/imported/_JumpFallInbetween.png-1e5fe506fb7df9a9b930c1130abb93a3.ctex"]
 
 [params]
 

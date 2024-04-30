@@ -7,6 +7,9 @@
 [ext_resource type="Texture2D" uid="uid://dchesu4pfn3j" path="res://assets/backgrounds/BG3.png" id="5_88cpg"]
 [ext_resource type="Texture2D" uid="uid://drjxq6wplgtuq" path="res://assets/backgrounds/stage.PNG" id="6_3u077"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8ywwc"]
+size = Vector2(59, 223)
+
 [node name="Arena" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_e25fx")]
@@ -39,3 +42,4 @@ visible = false
 z_index = -11
 texture = ExtResource("6_3u077")
 centered = false
+
