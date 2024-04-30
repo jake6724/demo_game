@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8lo3hhcsq8y1"
-path="res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"
+uid="uid://dcrwq334d22dd"
+path="res://.godot/imported/_AttackComboNoMovement.png-9f9ef3d83d774801c0809cdda71756ed.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/free_knight/_Dash.png"
-dest_files=["res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"]
+source_file="res://assets/textures/free_knight/_AttackComboNoMovement.png"
+dest_files=["res://.godot/imported/_AttackComboNoMovement.png-9f9ef3d83d774801c0809cdda71756ed.ctex"]
 
 [params]
 

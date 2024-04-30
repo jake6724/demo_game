@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8lo3hhcsq8y1"
-path="res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"
+uid="uid://d0o4hj2fmcxy2"
+path="res://.godot/imported/_Slide.png-fdb16475e81c0cfe4b4469d825e434c2.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/free_knight/_Dash.png"
-dest_files=["res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"]
+source_file="res://assets/textures/free_knight/_Slide.png"
+dest_files=["res://.godot/imported/_Slide.png-fdb16475e81c0cfe4b4469d825e434c2.ctex"]
 
 [params]
 

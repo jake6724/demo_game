@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8lo3hhcsq8y1"
-path="res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"
+uid="uid://y4m6un76ngil"
+path="res://.godot/imported/_CrouchWalk.png-018a4ad1f1a8b88ea112df10abc75d4e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/free_knight/_Dash.png"
-dest_files=["res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"]
+source_file="res://assets/textures/free_knight/_CrouchWalk.png"
+dest_files=["res://.godot/imported/_CrouchWalk.png-018a4ad1f1a8b88ea112df10abc75d4e.ctex"]
 
 [params]
 

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8lo3hhcsq8y1"
-path="res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"
+uid="uid://cvviaynhfg3g2"
+path="res://.godot/imported/_CrouchAttack.png-d9b18e9f02e20675ad85febe3e7621ce.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/textures/free_knight/_Dash.png"
-dest_files=["res://.godot/imported/_Dash.png-7dbdc559becf26e60cdf2d5535aa1381.ctex"]
+source_file="res://assets/textures/free_knight/_CrouchAttack.png"
+dest_files=["res://.godot/imported/_CrouchAttack.png-d9b18e9f02e20675ad85febe3e7621ce.ctex"]
 
 [params]
 
