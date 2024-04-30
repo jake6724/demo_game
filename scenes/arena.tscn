@@ -1,18 +1,11 @@
 [gd_scene load_steps=7 format=3 uid="uid://biq48dea3esk4"]
 
 [ext_resource type="PackedScene" uid="uid://dj2pc1cj8gru3" path="res://scenes/player.tscn" id="1_e25fx"]
-
-[sub_resource type="QuadMesh" id="QuadMesh_f8v71"]
-size = Vector2(500, 50)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5a5xg"]
-resource_local_to_scene = true
-size = Vector2(302.439, 23)
-
-[sub_resource type="QuadMesh" id="QuadMesh_q8w63"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_p3bmt"]
-size = Vector2(178, 22)
+[ext_resource type="PackedScene" uid="uid://plndvi2whv5" path="res://scenes/BasePlatform.tscn" id="2_ehky8"]
+[ext_resource type="Texture2D" uid="uid://dr5dn0oa7w037" path="res://assets/backgrounds/BG1.png" id="3_5ooa5"]
+[ext_resource type="Texture2D" uid="uid://bf0vrvo8gnpx6" path="res://assets/backgrounds/BG2.png" id="4_wvgou"]
+[ext_resource type="Texture2D" uid="uid://dchesu4pfn3j" path="res://assets/backgrounds/BG3.png" id="5_88cpg"]
+[ext_resource type="Texture2D" uid="uid://drjxq6wplgtuq" path="res://assets/backgrounds/stage.PNG" id="6_3u077"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8ywwc"]
 size = Vector2(59, 223)
@@ -20,63 +13,33 @@ size = Vector2(59, 223)
 [node name="Arena" type="Node2D"]
 
 [node name="Player" parent="." instance=ExtResource("1_e25fx")]
-position = Vector2(320, 82)
+position = Vector2(463, 88)
 
 [node name="MainPlatform" type="StaticBody2D" parent="."]
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="MainPlatform"]
-position = Vector2(321, 237)
-scale = Vector2(1.208, 0.56)
-mesh = SubResource("QuadMesh_f8v71")
+[node name="Node2D" parent="." instance=ExtResource("2_ehky8")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="MainPlatform"]
-position = Vector2(321, 237)
-scale = Vector2(2, 1.22)
-shape = SubResource("RectangleShape2D_5a5xg")
+[node name="Bg1" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(3, 2.83333)
+texture = ExtResource("3_5ooa5")
+centered = false
 
-[node name="UpperPlatform" type="StaticBody2D" parent="."]
+[node name="Bg2" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(3, 2.83333)
+texture = ExtResource("4_wvgou")
+centered = false
 
-[node name="MeshInstance2D" type="MeshInstance2D" parent="UpperPlatform"]
-position = Vector2(203, 149)
-scale = Vector2(178, 22)
-mesh = SubResource("QuadMesh_q8w63")
+[node name="Bg3" type="Sprite2D" parent="."]
+z_index = -10
+scale = Vector2(3, 2.83333)
+texture = ExtResource("5_88cpg")
+centered = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPlatform"]
-position = Vector2(203, 149)
-shape = SubResource("RectangleShape2D_p3bmt")
+[node name="Stage" type="Sprite2D" parent="."]
+visible = false
+z_index = -11
+texture = ExtResource("6_3u077")
+centered = false
 
-[node name="UpperPlatform2" type="StaticBody2D" parent="."]
-position = Vector2(100, 0)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="UpperPlatform2"]
-position = Vector2(330, 150)
-scale = Vector2(178, 22)
-mesh = SubResource("QuadMesh_q8w63")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="UpperPlatform2"]
-position = Vector2(330, 150)
-shape = SubResource("RectangleShape2D_p3bmt")
-
-[node name="WallLeft" type="StaticBody2D" parent="."]
-position = Vector2(100, 0)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="WallLeft"]
-position = Vector2(-106.5, 112.5)
-scale = Vector2(59, 223)
-mesh = SubResource("QuadMesh_q8w63")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallLeft"]
-position = Vector2(-106.5, 112.5)
-shape = SubResource("RectangleShape2D_8ywwc")
-
-[node name="WallRight" type="StaticBody2D" parent="."]
-position = Vector2(750, 0)
-
-[node name="MeshInstance2D" type="MeshInstance2D" parent="WallRight"]
-position = Vector2(-106.5, 112.5)
-scale = Vector2(59, 223)
-mesh = SubResource("QuadMesh_q8w63")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WallRight"]
-position = Vector2(-106.5, 112.5)
-shape = SubResource("RectangleShape2D_8ywwc")
