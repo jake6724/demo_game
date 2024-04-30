@@ -1,5 +1,4 @@
-
-[gd_scene load_steps=18 format=3 uid="uid://dj2pc1cj8gru3"]
+[gd_scene load_steps=18 format=3 uid="uid://d3645lst5mtqr"]
 
 [ext_resource type="Texture2D" uid="uid://cxffg8sehfltx" path="res://assets/textures/free_knight/_Idle.png" id="1_riy2v"]
 [ext_resource type="Texture2D" uid="uid://dp3tti48hn4nr" path="res://assets/textures/free_knight/_Run.png" id="3_t8sqs"]
