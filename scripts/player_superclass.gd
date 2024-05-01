@@ -62,7 +62,7 @@ func _physics_process(delta):
 			velocity.x = move_toward(velocity.x, 0, air_speed)
 	
 	if direction != 0:
-		switch_direction(direction)
+		switch_direction(direction) 
 		
 	# Take damage (HUD testing) 
 	if Input.is_action_just_pressed("take_damage"):
