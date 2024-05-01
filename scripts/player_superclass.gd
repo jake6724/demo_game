@@ -67,6 +67,10 @@ func _physics_process(delta):
 	if direction != 0:
 		switch_direction(direction)
 		
+	# Take damage (HUD testing) 
+	if Input.is_action_just_pressed("take_damage"):
+		update_health(10.0)
+		
 	move_and_slide()
 	update_animations(direction)
 
@@ -87,6 +91,8 @@ func switch_direction(direction):
 	sprite.position.x = direction * 4
 	
 func update_health(damage_recieved):
-	health += damage_recieved
+	health += float(damage_recieved)
+	health_updated.emit(health)
 	
+
 
