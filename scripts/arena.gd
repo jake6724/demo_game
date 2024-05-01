@@ -1,16 +1,25 @@
 extends Node2D
 
+# Initialize variables
+var character_screen
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	#var player = get_node("player_main")
+	# Pre-load character scene
+	character_screen = preload("res://scenes/character_scene.tscn")
+	
+	# Connect to player signals
 	$player_main.health_updated.connect(on_player_health_updated)
-
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	# Switch between screens (temp for testing) 
+	if Input.is_action_just_pressed("change_screen"):
+		go_to_character_screen()
 
+# Triggered when player emits 'health_updated' 
 func on_player_health_updated(health):
 	$HUD.update_player_health(health)
-	
+
+func go_to_character_screen():
+	get_tree().change_scene_to_packed(character_screen)
