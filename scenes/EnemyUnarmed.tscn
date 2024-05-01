@@ -1,12 +1,98 @@
-[gd_scene load_steps=6 format=3 uid="uid://dabq2onc0qvcq"]
+[gd_scene load_steps=9 format=3 uid="uid://dabq2onc0qvcq"]
 
 [ext_resource type="Script" path="res://scripts/EnemyUnarmed.gd" id="1_25obr"]
-[ext_resource type="Texture2D" uid="uid://dpwpb4d8k2ja" path="res://assets/player/Player Idle 48x48.png" id="1_cdfdq"]
-[ext_resource type="Script" path="res://scenes/StateMachine.gd" id="3_l8d07"]
+[ext_resource type="Texture2D" uid="uid://ewmcw5e1ie5g" path="res://assets/player/player run 48x48.png" id="2_8sxid"]
+[ext_resource type="Script" path="res://scripts/StateMachine.gd" id="3_nebup"]
 [ext_resource type="Script" path="res://scripts/States/EnemyUnarmedFollow.gd" id="4_6jjlj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ij7x"]
 size = Vector2(32, 58)
+
+[sub_resource type="Animation" id="Animation_rhfsg"]
+resource_name = "Run"
+length = 0.75
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_8sxid")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_urat4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_8sxid")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_75tqo"]
+_data = {
+"RESET": SubResource("Animation_urat4"),
+"Run": SubResource("Animation_rhfsg")
+}
 
 [node name="EnemyUnarmed" type="CharacterBody2D"]
 scale = Vector2(1.3, 1.3)
@@ -16,8 +102,8 @@ script = ExtResource("1_25obr")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
-texture = ExtResource("1_cdfdq")
-hframes = 10
+texture = ExtResource("2_8sxid")
+hframes = 8
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -14.5)
@@ -25,9 +111,12 @@ scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_0ij7x")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_75tqo")
+}
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("3_l8d07")
+script = ExtResource("3_nebup")
 initial_state = NodePath("UnarmedEnemyFollow")
 
 [node name="UnarmedEnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
