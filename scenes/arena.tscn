@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://biq48dea3esk4"]
+[gd_scene load_steps=10 format=3 uid="uid://biq48dea3esk4"]
 
 [ext_resource type="Script" path="res://scripts/arena.gd" id="1_o25iy"]
 [ext_resource type="PackedScene" uid="uid://plndvi2whv5" path="res://scenes/BasePlatform.tscn" id="2_ehky8"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://drjxq6wplgtuq" path="res://assets/backgrounds/stage.PNG" id="6_3u077"]
 [ext_resource type="PackedScene" uid="uid://t67wocrvvx70" path="res://scenes/HUD.tscn" id="7_m7r6o"]
 [ext_resource type="PackedScene" uid="uid://c13nukupc5xsd" path="res://scenes/player_main.tscn" id="7_r01nc"]
+[ext_resource type="PackedScene" uid="uid://dabq2onc0qvcq" path="res://scenes/enemy_unarmed.tscn" id="9_15237"]
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_o25iy")
@@ -38,7 +39,9 @@ centered = false
 
 [node name="BasePlatform" parent="." instance=ExtResource("2_ehky8")]
 
-[node name="player_main" parent="." instance=ExtResource("7_r01nc")]
-position = Vector2(468, 103)
-
 [node name="HUD" parent="." instance=ExtResource("7_m7r6o")]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("9_15237")]
+position = Vector2(584, 272)
+
+[node name="player_main" parent="." instance=ExtResource("7_r01nc")]
