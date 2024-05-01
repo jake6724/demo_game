@@ -16,9 +16,6 @@ var fast_fall_velocity = 20
 var damage = 10.0
 var health = 0.0
 
-# Animation vars 
-var is_attacking = false 
-
 # Signals
 signal health_updated
 

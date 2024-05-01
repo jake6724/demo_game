@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://ce55v5fbrjys5" path="res://assets/textures/free_knight/_Jump.png" id="4_h0834"]
 [ext_resource type="Texture2D" uid="uid://dp3tti48hn4nr" path="res://assets/textures/free_knight/_Run.png" id="5_hdnfv"]
 [ext_resource type="Texture2D" uid="uid://bco6ppodhog65" path="res://assets/textures/free_knight/_Attack2NoMovement.png" id="6_x7kqb"]
-[ext_resource type="Script" path="res://scripts/AnimationPlayer.gd" id="8_1qi0e"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy0k8"]
 size = Vector2(17, 38)
@@ -354,6 +353,19 @@ _data = {
 "side_tilt": SubResource("Animation_hv3w7")
 }
 
+[sub_resource type="GDScript" id="GDScript_2rxxq"]
+script/source = "extends AnimationPlayer
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+	
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta):
+	pass
+"
+
 [node name="CharacterBody2D" type="CharacterBody2D"]
 script = ExtResource("1_cj338")
 
@@ -372,4 +384,4 @@ libraries = {
 "": SubResource("AnimationLibrary_kwedl")
 }
 autoplay = "idle"
-script = ExtResource("8_1qi0e")
+script = SubResource("GDScript_2rxxq")
