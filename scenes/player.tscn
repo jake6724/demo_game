@@ -6,7 +6,7 @@
 [ext_resource type="Texture2D" uid="uid://b60ygmrf7hmby" path="res://assets/textures/free_knight/_Fall.png" id="5_c8grg"]
 [ext_resource type="Texture2D" uid="uid://b8lo3hhcsq8y1" path="res://assets/textures/free_knight/_Dash.png" id="6_l2scg"]
 [ext_resource type="Texture2D" uid="uid://bco6ppodhog65" path="res://assets/textures/free_knight/_Attack2NoMovement.png" id="7_gtovw"]
-[ext_resource type="Script" path="res://scenes/AnimationPlayer.gd" id="8_082pv"]
+[ext_resource type="Script" path="res://scripts/AnimationPlayer.gd" id="8_082pv"]
 
 [sub_resource type="GDScript" id="GDScript_rrriw"]
 script/source = "extends PlayerParent

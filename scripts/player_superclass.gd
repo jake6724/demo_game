@@ -93,6 +93,3 @@ func switch_direction(direction):
 func update_health(damage_recieved):
 	health += float(damage_recieved)
 	health_updated.emit(health)
-	
-
-
