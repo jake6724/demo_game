@@ -1,39 +1,44 @@
-[gd_scene load_steps=7 format=3 uid="uid://biq48dea3esk4"]
+[gd_scene load_steps=9 format=3 uid="uid://biq48dea3esk4"]
 
-[ext_resource type="Texture2D" uid="uid://dr5dn0oa7w037" path="res://assets/backgrounds/BG1.png" id="2_3fnhd"]
-[ext_resource type="Texture2D" uid="uid://bf0vrvo8gnpx6" path="res://assets/backgrounds/BG2.png" id="3_g377v"]
-[ext_resource type="Texture2D" uid="uid://dchesu4pfn3j" path="res://assets/backgrounds/BG3.png" id="4_tg7ty"]
-[ext_resource type="Texture2D" uid="uid://drjxq6wplgtuq" path="res://assets/backgrounds/stage.PNG" id="5_fy8iy"]
-[ext_resource type="PackedScene" uid="uid://plndvi2whv5" path="res://scenes/BasePlatform.tscn" id="6_3brqy"]
-[ext_resource type="PackedScene" uid="uid://c13nukupc5xsd" path="res://scenes/player_main.tscn" id="7_48fyc"]
+[ext_resource type="Script" path="res://scripts/arena.gd" id="1_o25iy"]
+[ext_resource type="PackedScene" uid="uid://plndvi2whv5" path="res://scenes/BasePlatform.tscn" id="2_ehky8"]
+[ext_resource type="Texture2D" uid="uid://dr5dn0oa7w037" path="res://assets/backgrounds/BG1.png" id="3_5ooa5"]
+[ext_resource type="Texture2D" uid="uid://bf0vrvo8gnpx6" path="res://assets/backgrounds/BG2.png" id="4_wvgou"]
+[ext_resource type="Texture2D" uid="uid://dchesu4pfn3j" path="res://assets/backgrounds/BG3.png" id="5_88cpg"]
+[ext_resource type="Texture2D" uid="uid://drjxq6wplgtuq" path="res://assets/backgrounds/stage.PNG" id="6_3u077"]
+[ext_resource type="PackedScene" uid="uid://t67wocrvvx70" path="res://scenes/HUD.tscn" id="7_m7r6o"]
+[ext_resource type="PackedScene" uid="uid://c13nukupc5xsd" path="res://scenes/player_main.tscn" id="7_r01nc"]
 
 [node name="Arena" type="Node2D"]
+script = ExtResource("1_o25iy")
 
 [node name="Bg1" type="Sprite2D" parent="."]
 z_index = -10
 scale = Vector2(3, 2.83333)
-texture = ExtResource("2_3fnhd")
+texture = ExtResource("3_5ooa5")
 centered = false
 
 [node name="Bg2" type="Sprite2D" parent="."]
 z_index = -10
 scale = Vector2(3, 2.83333)
-texture = ExtResource("3_g377v")
+texture = ExtResource("4_wvgou")
 centered = false
 
 [node name="Bg3" type="Sprite2D" parent="."]
 z_index = -10
 scale = Vector2(3, 2.83333)
-texture = ExtResource("4_tg7ty")
+texture = ExtResource("5_88cpg")
 centered = false
 
 [node name="Stage_reference" type="Sprite2D" parent="."]
 visible = false
 z_index = -11
-texture = ExtResource("5_fy8iy")
+texture = ExtResource("6_3u077")
 centered = false
 
-[node name="BasePlatform" parent="." instance=ExtResource("6_3brqy")]
+[node name="BasePlatform" parent="." instance=ExtResource("2_ehky8")]
 
-[node name="player_main" parent="." instance=ExtResource("7_48fyc")]
-position = Vector2(463, 88)
+[node name="player_main" parent="." instance=ExtResource("7_r01nc")]
+position = Vector2(468, 103)
+
+[node name="HUD" parent="." instance=ExtResource("7_m7r6o")]
