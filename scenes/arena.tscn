@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://dchesu4pfn3j" path="res://assets/backgrounds/BG3.png" id="4_tg7ty"]
 [ext_resource type="Texture2D" uid="uid://drjxq6wplgtuq" path="res://assets/backgrounds/stage.PNG" id="5_fy8iy"]
 [ext_resource type="PackedScene" uid="uid://plndvi2whv5" path="res://scenes/BasePlatform.tscn" id="6_3brqy"]
-[ext_resource type="PackedScene" uid="uid://c13nukupc5xsd" path="res://scenes/player_main.tscn" id="7_48fyc"]
+[ext_resource type="PackedScene" path="res://scenes/player_main.tscn" id="7_48fyc"]
 
 [node name="Arena" type="Node2D"]
 
