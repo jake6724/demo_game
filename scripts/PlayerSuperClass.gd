@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name player_superclass
+class_name PlayerSuperClass
 
 @export var speed = 300.0
 

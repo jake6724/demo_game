@@ -5,6 +5,8 @@ extends Node2D
 var current_state :  State
 var states : Dictionary = {} 
 
+signal change_current_state
+
 func _ready():
 	# Check through all children of 'StateMachine' node 
 	# and add to states dict if child is of 'State' class
@@ -24,7 +26,6 @@ func _process(delta):
 func _physics_process(delta):
 	if  current_state:
 		current_state.state_physics_update(delta)
-		print("Current State:", current_state)
 		
 func on_child_transition(state, new_state_name):
 	# Only transition if the state that called this function
@@ -46,3 +47,4 @@ func on_child_transition(state, new_state_name):
 	new_state.enter()
 	
 	current_state = new_state
+	change_current_state.emit(new_state_name)

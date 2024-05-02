@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://dnirn71nq7d6u"]
+[gd_scene load_steps=15 format=3 uid="uid://dnirn71nq7d6u"]
 
 [ext_resource type="Script" path="res://scripts/EnemySuperClass.gd" id="1_r5yw5"]
 [ext_resource type="Texture2D" uid="uid://ewmcw5e1ie5g" path="res://assets/player/player run 48x48.png" id="2_qjdcx"]
@@ -8,7 +8,6 @@
 [ext_resource type="Script" path="res://scripts/States/Enemy/EnemyFollow.gd" id="5_tqm0s"]
 [ext_resource type="Script" path="res://scripts/States/Enemy/EnemyIdle.gd" id="6_q0xjo"]
 [ext_resource type="Script" path="res://scripts/States/Enemy/EnemyAttackContinuous.gd" id="8_ggck2"]
-[ext_resource type="FontFile" uid="uid://b1j8k7ot4ru6k" path="res://assets/fonts/Minecraft_font.ttf" id="9_7rdr6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ij7x"]
 size = Vector2(32, 58)
@@ -268,14 +267,6 @@ enemy = NodePath("../..")
 script = ExtResource("8_ggck2")
 enemy = NodePath("../..")
 
-[node name="LabelCurrentState" type="Label" parent="."]
-offset_left = -95.3846
-offset_top = -44.6154
-offset_right = 95.6154
-offset_bottom = -28.6154
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("9_7rdr6")
-theme_override_font_sizes/font_size = 16
-text = "EnemyAttackContinuous"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="CurrentState" type="Label" parent="."]
+offset_right = 40.0
+offset_bottom = 23.0

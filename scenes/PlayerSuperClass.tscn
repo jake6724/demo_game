@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://udluj6eeolgk"]
 
-[ext_resource type="Script" path="res://scripts/player_superclass.gd" id="1_cj338"]
 [ext_resource type="Texture2D" uid="uid://cxffg8sehfltx" path="res://assets/textures/free_knight/_Idle.png" id="1_pn11e"]
+[ext_resource type="Script" path="res://scripts/PlayerSuperClass.gd" id="1_u0vke"]
 [ext_resource type="Texture2D" uid="uid://b8lo3hhcsq8y1" path="res://assets/textures/free_knight/_Dash.png" id="2_rfywk"]
 [ext_resource type="Texture2D" uid="uid://b60ygmrf7hmby" path="res://assets/textures/free_knight/_Fall.png" id="3_c27x0"]
 [ext_resource type="Texture2D" uid="uid://ce55v5fbrjys5" path="res://assets/textures/free_knight/_Jump.png" id="4_h0834"]
@@ -369,7 +369,7 @@ func _process(delta):
 [node name="CharacterBody2D" type="CharacterBody2D" groups=["Player"]]
 z_index = 1
 collision_mask = 4
-script = ExtResource("1_cj338")
+script = ExtResource("1_u0vke")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(4, -40)

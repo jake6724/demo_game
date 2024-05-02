@@ -1,8 +1,10 @@
 extends State
 class_name EnemySuperState
 
+# Find a way to make this set to an enemy by default 
+# so it isn't required to do manually in inspector
 @export var enemy : EnemySuperClass
-var player : player_superclass
+var player : PlayerSuperClass
 
 # Used for is_player_in_range(), and follow
 var x_distance_max = 30

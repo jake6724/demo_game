@@ -1,7 +1,7 @@
 extends Node2D
 
 # Initialize variables
-var arena_screen = "res://scenes/arena.tscn"
+var arena_screen = "res://scenes/Arena.tscn"
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

@@ -6,7 +6,7 @@ var character_screen
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	# Pre-load character scene
-	character_screen = preload("res://scenes/character_scene.tscn")
+	character_screen = preload("res://scenes/CharacterScene.tscn")
 	
 	# Connect to player signals
 	$player_main.health_updated.connect(on_player_health_updated)
