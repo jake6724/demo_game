@@ -1,5 +1,5 @@
 extends CharacterBody2D
-class_name EnemySuperClass
+class_name EnemyUnarmed
 
 @onready var ap = $AnimationPlayer
 

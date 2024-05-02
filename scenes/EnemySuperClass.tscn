@@ -3,9 +3,9 @@
 [ext_resource type="Script" path="res://scripts/EnemySuperClass.gd" id="1_r5yw5"]
 [ext_resource type="Texture2D" uid="uid://ewmcw5e1ie5g" path="res://assets/player/player run 48x48.png" id="2_qjdcx"]
 [ext_resource type="Texture2D" uid="uid://dpwpb4d8k2ja" path="res://assets/player/Player Idle 48x48.png" id="3_vy1nh"]
-[ext_resource type="Script" path="res://scripts/StateMachine.gd" id="4_lr257"]
-[ext_resource type="Script" path="res://scripts/States/Enemy/Follow.gd" id="5_4jt12"]
-[ext_resource type="Script" path="res://scripts/States/Enemy/Idle.gd" id="6_b3i6t"]
+[ext_resource type="Script" path="res://scripts/States/StateMachine.gd" id="4_wp7mu"]
+[ext_resource type="Script" path="res://scripts/States/Enemy/EnemyFollow.gd" id="5_tqm0s"]
+[ext_resource type="Script" path="res://scripts/States/Enemy/EnemyIdle.gd" id="6_q0xjo"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ij7x"]
 size = Vector2(32, 58)
@@ -195,13 +195,13 @@ libraries = {
 }
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
-script = ExtResource("4_lr257")
+script = ExtResource("4_wp7mu")
 initial_state = NodePath("EnemyFollow")
 
 [node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("5_4jt12")
+script = ExtResource("5_tqm0s")
 enemy = NodePath("../..")
 
 [node name="EnemyIdle" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
-script = ExtResource("6_b3i6t")
+script = ExtResource("6_q0xjo")
 enemy = NodePath("../..")
