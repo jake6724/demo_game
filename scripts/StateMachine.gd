@@ -23,20 +23,26 @@ func _ready():
 			
 func _process(delta):
 	if current_state:
-		current_state.Update(delta)
+		current_state.state_update(delta)
 		
 func _physics_process(delta):
 	if  current_state:
-		current_state.Physics_Update(delta)
+		current_state.state_physics_update(delta)
 		
 func on_child_transition(state, new_state_name):
+	# Only transition if the state that called this function
+	# is the current state
 	if state != current_state:
 		return 
 	
+	# Do not transition if the new state cannot be found
+	# in states dict
 	var new_state = states.get(new_state_name.to_lower())
 	if !new_state:
 		return 
 		
+	# If a state is currently running
+	# (Should always be true unless one isn't instantiated ?) 
 	if current_state:
 		current_state.exit()
 		

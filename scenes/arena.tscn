@@ -8,7 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://drjxq6wplgtuq" path="res://assets/backgrounds/stage.PNG" id="6_3u077"]
 [ext_resource type="PackedScene" uid="uid://t67wocrvvx70" path="res://scenes/HUD.tscn" id="7_m7r6o"]
 [ext_resource type="PackedScene" uid="uid://c13nukupc5xsd" path="res://scenes/player_main.tscn" id="7_r01nc"]
-[ext_resource type="PackedScene" uid="uid://dabq2onc0qvcq" path="res://scenes/EnemyUnarmed.tscn" id="9_15237"]
+[ext_resource type="PackedScene" uid="uid://dnirn71nq7d6u" path="res://scenes/EnemySuperClass.tscn" id="9_rx4nk"]
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_o25iy")
@@ -44,5 +44,5 @@ centered = false
 [node name="player_main" parent="." instance=ExtResource("7_r01nc")]
 position = Vector2(256, 232)
 
-[node name="EnemyUnarmed" parent="." instance=ExtResource("9_15237")]
-position = Vector2(656, 232)
+[node name="EnemySuperclass" parent="." instance=ExtResource("9_rx4nk")]
+position = Vector2(600, 216)
