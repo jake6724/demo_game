@@ -14,5 +14,9 @@ func state_physics_update(delta):
 	
 	else:
 		player.velocity.x = move_toward(player.velocity.x, 0, player.run_speed)
-		player.ap.play("idle")
+		# Determine whether to play grounded or in air idle animation
+		if player.current_condition == player.condition.GROUNDED:
+			player.ap.play("idle")
+		elif player.condition.IN_AIR:
+			player.ap.play("falling")
 	

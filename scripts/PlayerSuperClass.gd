@@ -3,6 +3,15 @@ class_name PlayerSuperClass
 
 @export var speed = 300.0
 
+# Player condition used in states
+enum condition{
+	GROUNDED,
+	IN_AIR,
+	ON_LEDGE,
+}
+
+var current_condition = condition.GROUNDED
+
 # Character stats
 var jump_counter = 0
 var jump_max = 100
@@ -36,14 +45,17 @@ func _ready():
 	label_current_state.text = str(pmsm.initial_state.state_name)
 	# Connect to StateMachine signals
 	pmsm.change_current_state.connect(on_change_current_state)
+	condition.GROUNDED
 
 func _physics_process(delta):
+	print(current_condition)
 	x_input = Input.get_axis("move_left", "move_right")
 	# Reset animation vars ? 
 	#is_attacking = false 
 	
 	# Reset jumping if player is on floor 
 	if is_on_floor():
+		current_condition = condition.GROUNDED
 		jump_counter = 0
 	
 	# Add the gravity.
@@ -59,6 +71,7 @@ func _physics_process(delta):
 		if jump_counter <= jump_max:
 			jump_counter += 1 
 			velocity.y = jump_velocity # negative values go up 
+			current_condition = condition.IN_AIR
 		
 	## Get the input direction and handle the movement/deceleration.
 	## Determine whether to use horizontal ground or air speed 
@@ -83,7 +96,7 @@ func _physics_process(delta):
 		
 	move_and_slide()
 	#update_animations(direction)
-	print_left_stick_values() 
+	#print_left_stick_values() 
 	
 func on_change_current_state(new_state_name):
 	label_current_state.text = new_state_name
