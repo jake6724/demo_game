@@ -10,6 +10,8 @@ enum condition{
 	ON_LEDGE,
 }
 
+var is_active = false 
+
 var current_condition = condition.GROUNDED
 
 # Character stats
@@ -29,6 +31,7 @@ var damage = 10.0
 var health = 0.0
 
 var x_input 
+var y_input 
 
 # Signals
 signal health_updated
@@ -48,8 +51,12 @@ func _ready():
 	condition.GROUNDED
 
 func _physics_process(delta):
-	print(current_condition)
+
 	x_input = Input.get_axis("move_left", "move_right")
+	y_input = Input.get_axis("move_up", "move_down")
+	
+	set_player_sprite_direction(x_input)
+
 	# Reset animation vars ? 
 	#is_attacking = false 
 	
@@ -63,11 +70,11 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	# Add fast fall ability (only after player has hit jump peak) 
-	if Input.is_action_just_pressed("fast_fall") and not is_on_floor() and velocity.y >= 0:
+	if Input.is_action_just_pressed("move_down") and not is_on_floor() and velocity.y >= 0:
 		velocity.y += gravity * delta * fast_fall_velocity
 
 	# Handle jump.
-	if Input.is_action_just_pressed("jump"):
+	if Input.is_action_just_pressed("move_up"):
 		if jump_counter <= jump_max:
 			jump_counter += 1 
 			velocity.y = jump_velocity # negative values go up 
@@ -113,6 +120,12 @@ func on_change_current_state(new_state_name):
 		#elif velocity.y > 0:
 			#ap.play("fall")
 		#
+		
+func set_player_sprite_direction(direction):
+	if direction != 0:
+		sprite.flip_h = (direction <= -0.001)
+		sprite.position.x = direction * 4
+
 func switch_direction(direction):
 	sprite.flip_h = (direction == -1)
 	sprite.position.x = direction * 4
