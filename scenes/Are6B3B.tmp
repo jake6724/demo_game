@@ -45,5 +45,4 @@ centered = false
 position = Vector2(256, 232)
 
 [node name="EnemySuperclass" parent="." instance=ExtResource("9_0bpdx")]
-visible = false
 position = Vector2(600, 232)

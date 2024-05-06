@@ -1,5 +1,5 @@
 extends Node2D
-class_name StateMachine
+# Class name ? 
 
 @export var initial_state : State 
 
@@ -14,7 +14,7 @@ func _ready():
 	for child in get_children():
 		if child is State:
 			states[child.name.to_lower()] = child
-			child.transition.connect(on_child_transition)
+			child.Transitioned.connect(on_child_transition)
 			
 	if initial_state:
 		initial_state.enter()

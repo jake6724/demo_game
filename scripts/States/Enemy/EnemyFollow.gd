@@ -21,6 +21,6 @@ func state_physics_update(delta: float):
 		y_target_reached = true
 		
 	if x_target_reached and y_target_reached:
-		Transitioned.emit(self, "EnemyAttackContinuous")
+		transition.emit(self, "EnemyAttackContinuous")
 	else:
 		enemy.ap.play("run")
