@@ -1,9 +1,10 @@
 extends PlayerActionSuperState
-class_name PlayerForwardTilt
+class_name PlayerJab
 
 func _ready():
-	state_name = "PlayerForwardTilt"
-	animation = "forward_tilt"
+	state_name = "PlayerJab"
+	animation = "jab"
+	animation2 = "neutral_air"
 	 
 func enter():
 	get_player_ref()
@@ -15,7 +16,10 @@ func player_action_setup():
 	player.ap.animation_finished.connect(on_animation_finished)
 	
 func run_player_action():
-	player.ap.play(animation)
+	if player.current_condition == player.condition.GROUNDED:
+		player.ap.play(animation)
+	elif player.current_condition == player.condition.IN_AIR:
+		player.ap.play(animation2)
 
 func on_animation_finished(anim_name):
 	transition.emit(self, "PlayerInactive")

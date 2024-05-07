@@ -1,64 +1,64 @@
 extends CharacterBody2D
 class_name PlayerSuperClass
 
-@export var speed = 300.0
+# Player nodes 
+@onready var ap = $AnimationPlayer
+@onready var sprite = $Sprite2D
+@onready var movement_sm = $PlayerMovementStateMachine
+@onready var action_sm = $PlayerActionStateMachine
+@onready var label_current_state = $LabelCurrentState
 
-# Player condition used in states
-enum condition{
-	GROUNDED,
-	IN_AIR,
-	ON_LEDGE,
-}
-
-var is_active = false 
-
+# Player condition (Used by state machines)
+enum condition{GROUNDED, IN_AIR, ON_LEDGE}
 var current_condition = condition.GROUNDED
-
-# Character stats
-var jump_counter = 0
-var jump_max = 100
-
-var run_speed = 300.0 
-var walk_speed = 200.0
-var run_threshold = .8
-
-
-var air_speed = 200.0
-var jump_velocity = -400.0
-var fast_fall_velocity = 20
-
-var damage = 10.0
-var health = 0.0
-
-var x_input 
-var y_input 
+var is_active
 
 # Signals
 signal health_updated
 
-@onready var ap = $AnimationPlayer
-@onready var sprite = $Sprite2D
-@onready var pmsm = $PlayerMovementStateMachine
-@onready var label_current_state = $LabelCurrentState
+# Player input data
+var x_input 
+var y_input 
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
+# Character stats
+var jump_counter: int = 0
+var jump_max: int = 100
+var run_speed: float = 300.0 
+var walk_speed:float = 200.0
+var run_threshold: float = .8
+var air_speed: float = 200.0
+var jump_velocity: float = -400.0
+var fast_fall_velocity:float = 20.0
+var damage: float = 10.0
+var health: float = 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 
+
 func _ready(): 
-	label_current_state.text = str(pmsm.initial_state.state_name)
+	# Set default state for state label
+	label_current_state.text = str(movement_sm.initial_state.state_name)
+	
 	# Connect to StateMachine signals
-	pmsm.change_current_state.connect(on_change_current_state)
+	movement_sm.change_current_state.connect(on_change_current_state)
+	action_sm.change_current_state.connect(on_change_current_state)
+	
+	# Default player conditions
 	condition.GROUNDED
+	is_active = false
 
 func _physics_process(delta):
-
+	# Get player input for movement states
 	x_input = Input.get_axis("move_left", "move_right")
 	y_input = Input.get_axis("move_up", "move_down")
 	
+	# Set sprite direction
 	set_player_sprite_direction(x_input)
-
-	# Reset animation vars ? 
-	#is_attacking = false 
+	
+	# Set current condition
+	if is_on_floor():
+		current_condition = condition.GROUNDED
+	else:
+		current_condition = condition.IN_AIR
 	
 	# Reset jumping if player is on floor 
 	if is_on_floor():
@@ -79,23 +79,6 @@ func _physics_process(delta):
 			jump_counter += 1 
 			velocity.y = jump_velocity # negative values go up 
 			current_condition = condition.IN_AIR
-		
-	## Get the input direction and handle the movement/deceleration.
-	## Determine whether to use horizontal ground or air speed 
-	var direction = Input.get_axis("move_left", "move_right")
-	#if is_on_floor():
-		#if direction:
-			#velocity.x = direction * ground_speed
-		#else:
-			#velocity.x = move_toward(velocity.x, 0, ground_speed)
-	#else:
-		#if direction:
-			#velocity.x = direction * air_speed
-		#else:
-			#velocity.x = move_toward(velocity.x, 0, air_speed)
-	
-	#if direction != 0:
-		#switch_direction(direction) 
 		
 	# Take damage (HUD testing) 
 	if Input.is_action_just_pressed("take_damage"):

@@ -19,7 +19,6 @@ func _ready():
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state
-		# Pass initial state to EnemySuperClass
 			
 func _process(delta):
 	if current_state:
@@ -41,12 +40,13 @@ func on_child_transition(state, new_state_name):
 	if !new_state:
 		return 
 		
-	# If a state is currently running
-	# (Should always be true unless one isn't instantiated ?) 
+	# If a state is currently running, run its exit function
 	if current_state:
 		current_state.exit()
-		
+	
+	# Run the new states enter function
 	new_state.enter()
 	
+	# Set current state to the new state, and emit state change signal
 	current_state = new_state
 	change_current_state.emit(new_state_name)
