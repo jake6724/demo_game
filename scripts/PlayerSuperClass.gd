@@ -83,7 +83,6 @@ func _ready():
 		hitbox_collisions.append([collider_obj, collider_obj_init_pos])
 
 func _physics_process(delta):
-	print(jump_counter)
 	#$"AnimationPlayer".advance(0)
 	#print(velocity.y)
 	# Get player input for movement states
