@@ -7,8 +7,11 @@ func _ready():
 	$EnemyHealthLabel.text = str(0) + "%"
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	pass
 
 func update_player_health(health):
 	$PlayerHealthLabel.text = str(health) + "%"
+	
+func update_enemy_health(health):
+	$EnemyHealthLabel.text = str(health) + "%"
