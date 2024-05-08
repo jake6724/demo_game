@@ -84,7 +84,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Sprite2D/CombatHitboxes/JabHitbox/JabCollision:disabled")
+tracks/4/path = NodePath("../Sprite2D/Combat Hitboxes/JabHitbox/JabCollision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -307,7 +307,7 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("../Sprite2D/CombatHitboxes/JabHitbox/JabCollision:disabled")
+tracks/4/path = NodePath("../Sprite2D/Combat Hitboxes/JabHitbox/JabCollision:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
@@ -604,13 +604,13 @@ position = Vector2(0, -16)
 texture = ExtResource("3_05gpm")
 hframes = 10
 
-[node name="CombatHitboxes" type="Node2D" parent="Sprite2D"]
+[node name="Combat Hitboxes" type="Node2D" parent="Sprite2D"]
 position = Vector2(0, 16)
 
-[node name="JabHitbox" type="Area2D" parent="Sprite2D/CombatHitboxes"]
+[node name="JabHitbox" type="Area2D" parent="Sprite2D/Combat Hitboxes"]
 script = ExtResource("3_4jbct")
 
-[node name="JabCollision" type="CollisionShape2D" parent="Sprite2D/CombatHitboxes/JabHitbox"]
+[node name="JabCollision" type="CollisionShape2D" parent="Sprite2D/Combat Hitboxes/JabHitbox"]
 position = Vector2(24, -15)
 rotation = 1.57101
 scale = Vector2(0.457344, 0.693284)

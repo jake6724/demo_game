@@ -41,9 +41,8 @@ centered = false
 
 [node name="HUD" parent="." instance=ExtResource("7_e5861")]
 
-[node name="player_main" parent="." instance=ExtResource("8_2y11k")]
+[node name="PlayerMain" parent="." instance=ExtResource("8_2y11k")]
 position = Vector2(256, 232)
 
-[node name="EnemySuperclass" parent="." instance=ExtResource("9_0bpdx")]
-visible = false
-position = Vector2(600, 232)
+[node name="EnemyMain" parent="." instance=ExtResource("9_0bpdx")]
+position = Vector2(576, 352)

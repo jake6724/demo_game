@@ -1,7 +1,7 @@
 extends EnemySuperState
 class_name EnemyJump
 
-func state_physics_update(delta):
+func state_physics_update(_delta):
 	enemy.velocity.y = enemy.jump_velocity
 	enemy.ap.play("jump")
 	

@@ -3,7 +3,7 @@ class_name EnemyFollow
 
 # TODO: Resolve falling/stuck to platform issues.
 	
-func state_physics_update(delta: float):
+func state_physics_update(_delta: float):
 	# Determine the global distance between player and enemy
 	var distance2D = player.global_position - enemy.global_position
 

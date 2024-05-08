@@ -8,7 +8,7 @@ func _ready():
 	pass
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
+func _process(_delta):
 	# Switch between screens (temp for testing) 
 	if Input.is_action_just_pressed("change_screen"):
 		go_to_arena_screen()

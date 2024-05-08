@@ -1,6 +1,9 @@
 extends CharacterBody2D
 class_name EnemySuperClass
 
+var health:float = 0.0
+signal health_updated
+
 @onready var ap = $AnimationPlayer
 @onready var sm = $StateMachine
 @onready var label_current_state = $LabelCurrentState
@@ -31,3 +34,13 @@ func _physics_process(delta):
 
 func on_change_current_state(new_state_name):
 	label_current_state.text = new_state_name
+	
+func hurtbox_entered(damage):
+	update_health(damage)
+	velocity.x += 300
+	
+func update_health(damage:float):
+	health += float(damage)
+	health_updated.emit(health)
+	
+	

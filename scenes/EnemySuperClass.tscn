@@ -1,7 +1,8 @@
-[gd_scene load_steps=22 format=3 uid="uid://dnirn71nq7d6u"]
+[gd_scene load_steps=24 format=3 uid="uid://dnirn71nq7d6u"]
 
 [ext_resource type="Script" path="res://scripts/EnemySuperClass.gd" id="1_r5yw5"]
 [ext_resource type="Texture2D" uid="uid://ewmcw5e1ie5g" path="res://assets/player/player run 48x48.png" id="2_qjdcx"]
+[ext_resource type="Script" path="res://scripts/Hitboxes/Enemy/EnemyHurtbox.gd" id="3_8c6ml"]
 [ext_resource type="Texture2D" uid="uid://dpwpb4d8k2ja" path="res://assets/player/Player Idle 48x48.png" id="3_vy1nh"]
 [ext_resource type="Texture2D" uid="uid://ci6qhrdkskmrb" path="res://assets/player/player katana continuous attack 80x64.png" id="4_hjux3"]
 [ext_resource type="Script" path="res://scripts/States/StateMachine.gd" id="4_wp7mu"]
@@ -13,6 +14,9 @@
 [ext_resource type="FontFile" uid="uid://b1j8k7ot4ru6k" path="res://assets/fonts/Minecraft_font.ttf" id="9_7rdr6"]
 [ext_resource type="Script" path="res://scripts/States/Enemy/EnemyJump.gd" id="10_0ude5"]
 [ext_resource type="Script" path="res://scripts/States/ActionStateMachine.gd" id="11_sm5y2"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_166jt"]
+radius = 6.92308
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ij7x"]
 size = Vector2(32, 58)
@@ -353,9 +357,19 @@ script = ExtResource("1_r5yw5")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
 texture = ExtResource("2_qjdcx")
+flip_h = true
 hframes = 10
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+[node name="EnemyHurtbox" type="Area2D" parent="Sprite2D"]
+position = Vector2(0, 16)
+script = ExtResource("3_8c6ml")
+
+[node name="HurtboxCollision" type="CollisionShape2D" parent="Sprite2D/EnemyHurtbox"]
+position = Vector2(0.769231, -15.3846)
+shape = SubResource("CapsuleShape2D_166jt")
+
+[node name="PhysicsHitbox" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(0, -14.5)
 scale = Vector2(0.5, 0.5)
 shape = SubResource("RectangleShape2D_0ij7x")
@@ -367,7 +381,7 @@ libraries = {
 
 [node name="StateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("4_wp7mu")
-initial_state = NodePath("EnemyFollow")
+initial_state = NodePath("EnemyIdle")
 
 [node name="EnemyFollow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
 script = ExtResource("5_tqm0s")

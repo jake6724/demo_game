@@ -8,7 +8,7 @@ func _ready():
 	state_name = "PlayerRun"
 	animation = "run"
 
-func state_physics_update(delta):
+func state_physics_update(_delta):
 	check_for_transitions()
 	state_move()
 	state_animate()
@@ -21,9 +21,20 @@ func check_for_transitions():
 		transition.emit(self, "PlayerIdle")
 	
 func state_move():
-	#if abs(player.x_input) >= player.run_threshold:
-	player.velocity.x = player.x_input * player.run_speed
-	
+	# Check if action is running
+	if player.is_active:
+		# Only apply movement if character is in the air
+		if player.current_condition == player.condition.IN_AIR:
+			player.velocity.x = player.x_input * player.air_speed
+		elif player.current_condition == player.condition.GROUNDED:
+			transition.emit(self, "PlayerIdle")
+	# Apply movement in both conditions (grounded/in_air) if no action
+	else:
+		if player.current_condition == player.condition.IN_AIR:
+			player.velocity.x = player.x_input * player.air_speed
+		elif player.current_condition == player.condition.GROUNDED:
+			player.velocity.x = player.x_input * player.run_speed
+			
 func state_animate():
 	if not player.is_active: 
 		player.ap.play(animation)
