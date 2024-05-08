@@ -7,6 +7,7 @@ func _ready():
 	# Used in state_logger() (part of base State class)
 	state_name = "PlayerRun"
 	animation = "run"
+	animation2 = "falling"
 
 func state_physics_update(_delta):
 	check_for_transitions()
@@ -37,4 +38,7 @@ func state_move():
 			
 func state_animate():
 	if not player.is_active: 
-		player.ap.play(animation)
+		if player.current_condition == player.condition.IN_AIR:
+			player.ap.play(animation2)
+		if player.current_condition == player.condition.GROUNDED:
+			player.ap.play(animation)

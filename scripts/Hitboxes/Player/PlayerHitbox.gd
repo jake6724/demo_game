@@ -7,4 +7,5 @@ func _init():
 	damage = 10.0
 
 func _ready():
-	hitbox_collision_node = $JabCollision
+	# Set collider to child of hitbox node 
+	hitbox_collision_node = get_child(0)

@@ -37,7 +37,7 @@ func on_change_current_state(new_state_name):
 	
 func hurtbox_entered(damage):
 	update_health(damage)
-	velocity.x += 300
+	velocity.x += 1000
 	
 func update_health(damage:float):
 	health += float(damage)

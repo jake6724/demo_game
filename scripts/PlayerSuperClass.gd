@@ -35,7 +35,7 @@ var current_action_state
 
 # Character stats
 var jump_counter: int = 0
-var jump_max: int = 100
+var jump_max: int = 2
 var run_speed: float = 300.0 
 var walk_speed:float = 200.0
 var run_threshold: float = .8
@@ -71,12 +71,19 @@ func _ready():
 	player_ready.emit()
 	
 	# Set up hitboxes array 
+	# Array items are lists of:
+	# [HitboxCollision obj, vector2 obj initial pos]
 	# All hitboxes MUST have 1 CHILD, a collision shape 2D
 	combat_hitboxes_parent = get_node("Sprite2D/CombatHitboxes")
+	var collider_obj
+	var collider_obj_init_pos
 	for child in combat_hitboxes_parent.get_children():
-		hitbox_collisions.append(child.get_child(0))
+		collider_obj = child.get_child(0)
+		collider_obj_init_pos = collider_obj.position
+		hitbox_collisions.append([collider_obj, collider_obj_init_pos])
 
 func _physics_process(delta):
+	print(jump_counter)
 	#$"AnimationPlayer".advance(0)
 	#print(velocity.y)
 	# Get player input for movement states
@@ -115,17 +122,21 @@ func set_player_sprite_direction(direction):
 		if direction <= -0.001:
 			# Flip sprite and invert hitboxes initial position x
 			sprite.flip_h = true
-			jab_hitbox_collision.position.x = - jab_hitbox_collision_init_pos.x
+			#jab_hitbox_collision.position.x = - jab_hitbox_collision_init_pos.x
+			set_hitbox_colliders_direction(true)
 		else:
 			# Unflip sprite, set hitbox position to initial x position
 			sprite.flip_h = false
-			jab_hitbox_collision.position.x = jab_hitbox_collision_init_pos.x
+			#jab_hitbox_collision.position.x = jab_hitbox_collision_init_pos.x
+			set_hitbox_colliders_direction(false)
 
-func set_player_hitbox_collisions_direction(should_flip: bool):
-	pass
-	#if should_flip:
-		#for c in hitbox_collisions:
-			#c.position.x = 
+func set_hitbox_colliders_direction(should_flip: bool):
+	if should_flip:
+		for c in hitbox_collisions:
+			c[0].position.x = - c[1].x
+	else:
+		for c in hitbox_collisions:
+			c[0].position.x = c[1].x
 	
 
 func update_health(damage_taken):
