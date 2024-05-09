@@ -107,15 +107,7 @@ func _physics_process(delta):
 		velocity.y += gravity * delta * fast_fall_velocity
 		
 	move_and_slide()
-	
-func on_change_current_movement_state(new_state_name):
-	label_current_movement_state.text = new_state_name
-	current_movement_state = new_state_name
-	
-func on_change_current_action_state(new_state_name):
-	label_current_action_state.text = new_state_name
-	current_action_state = new_state_name
-		
+
 func set_player_sprite_direction(direction):
 	if direction != 0:
 		if direction <= -0.001:
@@ -127,16 +119,27 @@ func set_player_sprite_direction(direction):
 			# Unflip sprite, set hitbox position to initial x position
 			sprite.flip_h = false
 			#jab_hitbox_collision.position.x = jab_hitbox_collision_init_pos.x
-			set_hitbox_colliders_direction(false)
+			set_hitbox_colliders_direction(false)	
 
 func set_hitbox_colliders_direction(should_flip: bool):
+	# For each item in hit box collisions, get the collider obj
+	# and set it equal to the collider obj's initial position,
+	# or its initial position inverted.
+	# Item = [Collider obj, Collider obj initial pos as a 2d vector]
 	if should_flip:
 		for c in hitbox_collisions:
 			c[0].position.x = - c[1].x
 	else:
 		for c in hitbox_collisions:
 			c[0].position.x = c[1].x
+
+func on_change_current_movement_state(new_state_name):
+	label_current_movement_state.text = new_state_name
+	current_movement_state = new_state_name
 	
+func on_change_current_action_state(new_state_name):
+	label_current_action_state.text = new_state_name
+	current_action_state = new_state_name
 
 func update_health(damage_taken):
 	health += float(damage_taken)

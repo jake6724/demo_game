@@ -3,6 +3,7 @@ class_name StateMachine
 
 @export var initial_state : State 
 @onready var player : PlayerSuperClass
+@onready var enemy : EnemySuperClass
 
 var current_state :  State
 var states : Dictionary = {} 
@@ -21,10 +22,6 @@ func _ready():
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state
-		
-	# Connect to player's 'player_ready' signal 
-	player = get_tree().get_first_node_in_group("Player")
-	player.player_ready.connect(on_player_ready)
 
 func _process(delta):
 	if current_state:
@@ -36,7 +33,7 @@ func _physics_process(delta):
 		
 func on_child_transition(state, new_state_name):
 	# Only transition if the state that called this function
-	# is the current state
+	# IS the current state
 	if state != current_state:
 		return 
 	
@@ -57,11 +54,14 @@ func on_child_transition(state, new_state_name):
 	current_state = new_state
 	change_current_state.emit(new_state_name)
 
-func on_player_ready():
-	pass
+func go_to_state(new_state, new_state_name):
+	# If a state is currently running, run its exit function
+	if current_state:
+		current_state.exit()
 	
-func initialize_states():
-	var state_to_initialize: State
-	for s in states:
-		state_to_initialize = states[s]
-		state_to_initialize.state_initialize()
+	# Run the new states enter function
+	new_state.enter()
+	
+	# Set current state to the new state, and emit state change signal
+	current_state = new_state
+	change_current_state.emit(new_state_name)

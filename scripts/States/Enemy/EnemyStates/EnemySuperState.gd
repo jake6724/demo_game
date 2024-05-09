@@ -3,7 +3,7 @@ class_name EnemySuperState
 
 # Find a way to make this set to an enemy by default 
 # so it isn't required to do manually in inspector
-@export var enemy : EnemySuperClass
+var enemy : EnemySuperClass
 var player : PlayerSuperClass
 
 # Used for is_player_in_range(), and follow
@@ -17,13 +17,16 @@ var player_in_range : bool
 func enter():
 	# Load reference to player 
 	player = get_tree().get_first_node_in_group("Player")
+	# Load reference to enemy 
+	enemy = get_tree().get_first_node_in_group("Enemy")
 
-func is_player_in_range(): # Eventually account for hit box sizes
-	var distance2D = player.global_position - enemy.global_position
-	
-	if abs(distance2D.x) > x_distance_max:
-		return false 
-	elif distance2D.y < y_distance_max:
-		return false 
-	else:
-		return true 
+#func is_player_in_range(): # Eventually account for hit box sizes
+	#var distance2D = player.global_position - enemy.global_position
+	#
+	#if abs(distance2D.x) > x_distance_max:
+		#return false 
+	#elif distance2D.y < y_distance_max:
+		#return false 
+	#else:
+		#return true 
+		
