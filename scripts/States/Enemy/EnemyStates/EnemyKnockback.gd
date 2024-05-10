@@ -1,21 +1,20 @@
 extends EnemySuperState
 class_name EnemyKnockback
 
-var knocked_frames = 30
+var knocked_frames
 var frame_counter = 0 
 var slowdown = 0.5 # 0.051
 
 func _ready():
-	
 	enemy = get_tree().get_first_node_in_group("Enemy")
 	state_name = "EnemyKnockback"
 	
 func enter():
 	frame_counter = 0
+	knocked_frames = enemy.hs
 	enemy.velocity = enemy.lv
 
 func state_physics_update(_delta):
-	#print(enemy.velocity)
 	if frame_counter != knocked_frames:
 		if enemy.knocked_right: # Attack hit this character to the right
 			#print(enemy.velocity.x - slowdown)

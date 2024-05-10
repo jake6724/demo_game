@@ -31,6 +31,7 @@ var lv: Vector2
 var ad: Vector2
 var knocked_right: bool # true = left, false = right
 var knocked_down: bool # true = up, left = down
+var hs: int 
 
 func _ready(): 
 	label_current_state.text = str(sm.initial_state.state_name)
@@ -53,13 +54,14 @@ func _physics_process(delta):
 func on_change_current_state(new_state):
 	label_current_state.text = new_state.state_name
 	
-func hurtbox_entered(damage, new_kb, new_ls, new_lv, new_ad):
+func hurtbox_entered(damage, new_kb, new_ls, new_lv, new_ad, new_hs):
 	update_health(damage)
 	
 	kb = new_kb
 	ls = new_ls
 	lv = new_lv
 	ad = new_ad
+	hs = new_hs
 	
 	if ad.x <= 0:
 		knocked_right = true

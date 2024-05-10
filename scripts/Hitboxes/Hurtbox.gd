@@ -2,6 +2,7 @@ extends Area2D
 class_name Hurtbox
 
 var hurtbox_collision_node: CollisionShape2D
+var HS_CONSTANT:float = 0.05 # .4 in smash
 
 func _init():
 	# Need to be updated based on player or enemy
@@ -31,8 +32,9 @@ func on_area_entered(hitbox: Hitbox):
 		var ad = calc_attacker_direction(attacker)
 		var ls = calc_launch_speed(kb)
 		var lv = calc_launch_velocity(attacker_state.angle, ls, ad)
+		var hs = calc_hitstun(kb)
 		
-		self.owner.hurtbox_entered(attacker_state.damage, kb, ls, lv, ad)
+		self.owner.hurtbox_entered(attacker_state.damage, kb, ls, lv, ad, hs)
 
 func calc_attacker_direction(attacker):
 	var ad = attacker.global_position - self.global_position
@@ -70,7 +72,7 @@ func calc_launch_velocity(angle, ls, ad):
 	lv.x = cos(deg_to_rad(angle))
 	lv.y = sin(deg_to_rad(angle))
 
-	# Make positive or negative based on attack direction
+	# Make lv positive or negative based on attack direction
 	if ad.x > 0: lv.x *= -1
 	if ad.y < 0: lv.y *= -1 # Might be wrong 
 
@@ -79,3 +81,8 @@ func calc_launch_velocity(angle, ls, ad):
 	lv.y *= ls
 	print("lv: ", lv)
 	return lv
+
+func calc_hitstun(kb):
+	var hs = int(kb * HS_CONSTANT)
+	print(hs)
+	return hs
