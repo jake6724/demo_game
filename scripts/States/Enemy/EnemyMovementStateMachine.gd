@@ -20,6 +20,4 @@ func _ready():
 	
 func on_enemy_hurtbox_entered():
 	on_child_transition(current_state, "EnemyKnockback")
-	#var previous_state = current_state
-	#go_to_state(states["enemyknockback"], "EnemyKnockback")	
 	

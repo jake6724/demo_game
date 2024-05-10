@@ -19,6 +19,9 @@ func state_physics_update(_delta):
 		
 	if Input.is_action_just_pressed("jab"):
 		transition.emit(self, "PlayerJab")
+	
+	if Input.is_action_just_pressed("forward_smash"):
+		transition.emit(self, "PlayerForwardSmash")
 		
 	if Input.is_action_just_pressed("move_up"):
 		# Only allow to enter jump if jump count valid 

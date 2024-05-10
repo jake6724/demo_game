@@ -1,6 +1,6 @@
 extends Node
 class_name State
-var state_name = "State"
+@onready var state_name = "State"
 var animation = "RESET"
 var animation2
 var animation3

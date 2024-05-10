@@ -15,37 +15,38 @@ class_name PlayerSuperClass
 var hitbox_collisions: Array
 var combat_hitboxes_parent
 
-
 # Player condition (Used by state machines)
 enum condition{GROUNDED, IN_AIR, ON_LEDGE}
-var current_condition = condition.GROUNDED
-var is_active
+var current_condition: int # A value of condition enum
+var is_active: bool
 
 # Signals
 signal player_ready
 signal health_updated
 
 # Player input data
-var x_input 
-var y_input 
+var x_input: float 
+var y_input: float 
 
 # Player state data 
-var current_movement_state
-var current_action_state
+var current_movement_state: State
+var current_action_state: State
 
 # Character stats
+#Movement
 var jump_counter: int = 0
-var jump_max: int = 2
+var jump_max: int = 2 # How many jumps character has 
 var run_speed: float = 300.0 
 var walk_speed:float = 200.0
-var run_threshold: float = .8
+var run_threshold: float = .8 # When to transition from walk to run
 var air_speed: float = 250.0
 var jump_velocity: float = -400.0
 var fast_fall_velocity:float = 20.0
-var damage: float = 10.0
-var health: float = 0.0
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
-
+#Combat
+var health: float = 0.0
+var weight: float = 10.0
+var knockback_resistance: float = 1.0 
 
 func _ready(): 
 	# Set default state for labels
@@ -57,23 +58,23 @@ func _ready():
 	action_sm.change_current_state.connect(on_change_current_action_state)
 	
 	# Set player default state names
-	current_movement_state = movement_sm.initial_state.state_name
-	current_action_state = action_sm.initial_state.state_name
+	current_movement_state = movement_sm.initial_state
+	current_action_state = action_sm.initial_state
 	
 	# Default player conditions
 	is_active = false
 	
 	# Emit that player is ready and loaded;
-	# used for loading player nodes (ex. AnimationPlayer
+	# used for loading player nodes (ex. AnimationPlayer)
 	# in other classes like states
-	# since states can access until player has loaded, 
+	# since states cannot access player data until player has loaded, 
 	# but children (the states) load before parent (PlayerSuperClass)
 	player_ready.emit()
 	
 	# Set up hitboxes array 
 	# Array items are lists of:
-	# [HitboxCollision obj, vector2 obj initial pos]
-	# All hitboxes MUST have 1 CHILD, a collision shape 2D
+	# [HitboxCollision obj, vector2 of obj initial pos]
+	# All hitboxes MUST have exactly 1 CHILD, a collision shape 2D
 	combat_hitboxes_parent = get_node("Sprite2D/CombatHitboxes")
 	var collider_obj
 	var collider_obj_init_pos
@@ -122,6 +123,7 @@ func set_player_sprite_direction(direction):
 			set_hitbox_colliders_direction(false)	
 
 func set_hitbox_colliders_direction(should_flip: bool):
+	# *Called by set_player_sprite_direction()*
 	# For each item in hit box collisions, get the collider obj
 	# and set it equal to the collider obj's initial position,
 	# or its initial position inverted.
@@ -133,13 +135,13 @@ func set_hitbox_colliders_direction(should_flip: bool):
 		for c in hitbox_collisions:
 			c[0].position.x = c[1].x
 
-func on_change_current_movement_state(new_state_name):
-	label_current_movement_state.text = new_state_name
-	current_movement_state = new_state_name
+func on_change_current_movement_state(new_state):
+	label_current_movement_state.text = new_state.state_name
+	current_movement_state = new_state
 	
-func on_change_current_action_state(new_state_name):
-	label_current_action_state.text = new_state_name
-	current_action_state = new_state_name
+func on_change_current_action_state(new_state):
+	label_current_action_state.text = new_state.state_name
+	current_action_state = new_state
 
 func update_health(damage_taken):
 	health += float(damage_taken)

@@ -52,16 +52,4 @@ func on_child_transition(state, new_state_name):
 	
 	# Set current state to the new state, and emit state change signal
 	current_state = new_state
-	change_current_state.emit(new_state_name)
-
-func go_to_state(new_state, new_state_name):
-	# If a state is currently running, run its exit function
-	if current_state:
-		current_state.exit()
-	
-	# Run the new states enter function
-	new_state.enter()
-	
-	# Set current state to the new state, and emit state change signal
-	current_state = new_state
-	change_current_state.emit(new_state_name)
+	change_current_state.emit(new_state)

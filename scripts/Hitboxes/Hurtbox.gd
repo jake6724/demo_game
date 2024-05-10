@@ -17,9 +17,58 @@ func on_area_entered(hitbox: Hitbox):
 		
 	if hitbox == null:
 		return 
+		
+	var attacker = hitbox.get_parent().get_parent().get_parent()
+	var attacker_state: State = hitbox.owner.current_action_state
 	
-	#print(self.owner,": Detected hitbox owner: ", hitbox.owner)
+	#print("Attacker: ", attacker)
+	#print("Attacker State: ", attacker_state)
 	
 	if self.owner.has_method("hurtbox_entered"):
-		self.owner.hurtbox_entered(hitbox.damage)
+		var kb = calc_knockback(attacker_state.damage, attacker_state.knockback_base, 
+		attacker_state.knockback_growth)
 		
+		var ad = calc_attacker_direction(attacker)
+		var ls = calc_launch_speed(kb)
+		var lv = calc_launch_velocity(attacker_state.angle, ls)
+		
+		self.owner.hurtbox_entered(attacker_state.damage, kb, ls, lv, ad)
+
+func calc_attacker_direction(attacker):
+	var ad = attacker.global_position - self.global_position
+	#print(ad)
+	return ad
+	
+func calc_knockback(damage, kbb, kbg):
+	var character = self.owner
+	var p = character.health + damage
+	var w = character.weight
+	var d = damage
+	var s = kbg 
+	var b = kbb
+	
+	#print("p: ", p)
+	#print("w: ", w) 
+	#print("d: ", d)
+	#print("s: ", s)
+	#print("b: ", b)
+	
+	var kb = ((((((p / 10) + (p * d / 20)) * (200 / w + 100)) * 1.4) + 18) * s) + b
+	print("kb: ", kb)
+	return kb
+	
+func calc_launch_speed(kb):
+	var ls = kb * 0.03 # try .004
+	#print("ls: ", ls)
+	return ls 
+	
+func calc_launch_velocity(angle, ls):
+	# V.x = cos(A)
+	# V.y = sin(A)
+	var lv: Vector2
+	lv.x = cos(deg_to_rad(angle))
+	lv.y = sin(deg_to_rad(angle))
+	lv.x *= ls
+	lv.y *= ls
+	print("lv: ", lv)
+	return lv
