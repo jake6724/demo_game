@@ -15,17 +15,15 @@ func enter():
 	enemy.velocity = enemy.lv
 
 func state_physics_update(_delta):
-	#print(enemy.velocity.x)
+	#print(enemy.velocity)
 	if frame_counter != knocked_frames:
 		if enemy.knocked_right: # Attack hit this character to the right
 			#print(enemy.velocity.x - slowdown)
 			if (enemy.velocity.x - slowdown) >= 0:
 				enemy.velocity.x -= slowdown
-			else: 
-				print("Fuck")
-			
 		else: # Attack hit this character to the left
-			pass
+			if (enemy.velocity.x + slowdown) <= 0:
+				enemy.velocity.x += slowdown
 
 		enemy.ap.play("knockback")
 		frame_counter += 1 

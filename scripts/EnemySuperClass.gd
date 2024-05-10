@@ -39,7 +39,6 @@ func _ready():
 	sm.change_current_state.connect(on_change_current_state)
 
 func _physics_process(delta):
-	#print("Enemy V: ", velocity)
 	
 	# Add the gravity.
 	if not is_on_floor():

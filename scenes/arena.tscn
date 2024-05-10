@@ -45,4 +45,4 @@ centered = false
 position = Vector2(256, 232)
 
 [node name="EnemyMain" parent="." instance=ExtResource("9_0bpdx")]
-position = Vector2(449, 350)
+position = Vector2(330, 352)

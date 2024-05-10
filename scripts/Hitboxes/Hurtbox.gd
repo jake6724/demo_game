@@ -30,13 +30,13 @@ func on_area_entered(hitbox: Hitbox):
 		
 		var ad = calc_attacker_direction(attacker)
 		var ls = calc_launch_speed(kb)
-		var lv = calc_launch_velocity(attacker_state.angle, ls)
+		var lv = calc_launch_velocity(attacker_state.angle, ls, ad)
 		
 		self.owner.hurtbox_entered(attacker_state.damage, kb, ls, lv, ad)
 
 func calc_attacker_direction(attacker):
 	var ad = attacker.global_position - self.global_position
-	#print(ad)
+	print("ad: ", ad)
 	return ad
 	
 func calc_knockback(damage, kbb, kbg):
@@ -62,12 +62,19 @@ func calc_launch_speed(kb):
 	#print("ls: ", ls)
 	return ls 
 	
-func calc_launch_velocity(angle, ls):
+func calc_launch_velocity(angle, ls, ad):
 	# V.x = cos(A)
 	# V.y = sin(A)
 	var lv: Vector2
+	# Set vector x and y based on attack moves pre-defined angle
 	lv.x = cos(deg_to_rad(angle))
 	lv.y = sin(deg_to_rad(angle))
+
+	# Make positive or negative based on attack direction
+	if ad.x > 0: lv.x *= -1
+	if ad.y < 0: lv.y *= -1 # Might be wrong 
+
+	# Multiply launch velocity values by the launch speed 
 	lv.x *= ls
 	lv.y *= ls
 	print("lv: ", lv)
