@@ -74,11 +74,11 @@ func calc_launch_velocity(angle, ls, ad):
 
 	# Make lv positive or negative based on attack direction
 	if ad.x > 0: lv.x *= -1
-	if ad.y < 0: lv.y *= -1 # Might be wrong 
+	#if ad.y < 0: lv.y *= -1 # Might be wrong 
 
 	# Multiply launch velocity values by the launch speed 
 	lv.x *= ls
-	lv.y *= ls
+	lv.y *= -ls
 	print("lv: ", lv)
 	return lv
 
