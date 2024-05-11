@@ -2,7 +2,7 @@ extends Area2D
 class_name Hurtbox
 
 var hurtbox_collision_node: CollisionShape2D
-var HS_CONSTANT:float = 0.05 # .4 in smash
+var HS_CONST:float = 0.005 # .4 in smash
 
 func _init():
 	# Need to be updated based on player or enemy
@@ -18,7 +18,8 @@ func on_area_entered(hitbox: Hitbox):
 		
 	if hitbox == null:
 		return 
-		
+	
+	# TODO: Chang this to owner 
 	var attacker = hitbox.get_parent().get_parent().get_parent()
 	var attacker_state: State = hitbox.owner.current_action_state
 	
@@ -28,7 +29,6 @@ func on_area_entered(hitbox: Hitbox):
 	if self.owner.has_method("hurtbox_entered"):
 		var kb = calc_knockback(attacker_state.damage, attacker_state.knockback_base, 
 		attacker_state.knockback_growth)
-		
 		var ad = calc_attacker_direction(attacker)
 		var ls = calc_launch_speed(kb)
 		var lv = calc_launch_velocity(attacker_state.angle, ls, ad)
@@ -83,6 +83,6 @@ func calc_launch_velocity(angle, ls, ad):
 	return lv
 
 func calc_hitstun(kb):
-	var hs = int(kb * HS_CONSTANT)
+	var hs = int(kb * HS_CONST)
 	print(hs)
 	return hs

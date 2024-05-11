@@ -14,7 +14,7 @@ func _ready():
 	damage = 10
 	knockback_base = 1
 	knockback_growth = 1
-	angle = 60
+	angle = 0
 	
 func enter():
 	player_action_setup()

@@ -8,7 +8,7 @@ func state_physics_update(_delta: float):
 	var distance2D = player.global_position - enemy.global_position
 
 	if abs(distance2D.x) > x_distance_max:
-		enemy.velocity.x = sign(distance2D.x) * enemy.move_speed
+		enemy.velocity.x = sign(distance2D.x) * enemy.run_speed
 		x_target_reached = false
 	else: 
 		enemy.velocity.x = 0

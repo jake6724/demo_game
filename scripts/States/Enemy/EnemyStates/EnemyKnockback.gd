@@ -3,7 +3,7 @@ class_name EnemyKnockback
 
 var knocked_frames
 var frame_counter = 0 
-var slowdown = 0.5 # 0.051
+var slowdown = 10 # 0.051
 
 func _ready():
 	enemy = get_tree().get_first_node_in_group("Enemy")
@@ -15,6 +15,7 @@ func enter():
 	enemy.velocity = enemy.lv
 
 func state_physics_update(_delta):
+	print(enemy.velocity)
 	if frame_counter != knocked_frames:
 		if enemy.knocked_right: # Attack hit this character to the right
 			#print(enemy.velocity.x - slowdown)

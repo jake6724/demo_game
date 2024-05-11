@@ -22,7 +22,7 @@ var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #Combat
 var damage: float = 10.0
 var health: float = 0.0
-var weight: float = 10.0 # Lower values are heavier
+var weight: float = 100.0 # Lower values are heavier
 var knockback_resistance: float = 1.0 
 #Knockback state values
 var kb: float
