@@ -20,8 +20,8 @@ func set_character_stats():
 	knockback_resistance = 1.0 
 
 func _physics_process(delta):
-# Set sprite direction
-	set_character_direction(x_input)
+	# Set sprite direction
+	set_character_direction(velocity.x)
 	
 	# Set current condition
 	if is_on_floor():
