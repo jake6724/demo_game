@@ -2,6 +2,17 @@ extends State
 class_name PlayerActionSuperState
 
 @onready var player : PlayerSuperClass
+
+# Hitbox stats
+# Chose to put this here so there isn't a child of 'Hitbox.gd' for each 
+# type of hitbox, the hitbox can just pull from the current action 
+# which is hopefully always the correct one... 
+var hitbox_priority: int
+var damage: float 
+var knockback_base: float
+var knockback_growth: float 
+var angle: float
+
 	
 func enter():
 		pass

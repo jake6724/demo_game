@@ -1,10 +1,10 @@
 extends PlayerActionSuperState
-class_name PlayerJab
+class_name PlayerForwardSmash
 
 func _ready():
-	state_name = "PlayerJab"
-	animation = "jab"
-	animation2 = "neutral_air"
+	state_name = "PlayerForwardSmash"
+	animation = "forward_smash"
+	animation2 = "neutral_air" # Needs to change 
 	 
 func enter():
 	player_action_setup()

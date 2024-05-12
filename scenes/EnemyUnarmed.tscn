@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dpwpb4d8k2ja" path="res://assets/player/Player Idle 48x48.png" id="1_cdfdq"]
 [ext_resource type="Texture2D" uid="uid://ewmcw5e1ie5g" path="res://assets/player/player run 48x48.png" id="2_8sxid"]
 [ext_resource type="Script" path="res://scripts/States/StateMachine.gd" id="3_nebup"]
-[ext_resource type="Script" path="res://scripts/States/Enemy/EnemyFollow.gd" id="4_tclrv"]
+[ext_resource type="Script" path="res://scripts/States/Enemy/EnemyStates/EnemyFollow.gd" id="4_tclrv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0ij7x"]
 size = Vector2(32, 58)

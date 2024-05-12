@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dnirn71nq7d6u"]
+[gd_scene load_steps=23 format=3 uid="uid://dnirn71nq7d6u"]
 
 [ext_resource type="Script" path="res://scripts/EnemySuperClass.gd" id="1_r5yw5"]
 [ext_resource type="Texture2D" uid="uid://ewmcw5e1ie5g" path="res://assets/player/player run 48x48.png" id="2_qjdcx"]
@@ -12,7 +12,6 @@
 [ext_resource type="FontFile" uid="uid://b1j8k7ot4ru6k" path="res://assets/fonts/Minecraft_font.ttf" id="9_7rdr6"]
 [ext_resource type="Script" path="res://scripts/States/Enemy/EnemyMovementStateMachine.gd" id="10_yv47a"]
 [ext_resource type="Script" path="res://scripts/States/Enemy/EnemyStates/EnemyKnockback.gd" id="13_1pejj"]
-[ext_resource type="Script" path="res://scripts/States/Enemy/EnemyStates/EnemyFollow.gd" id="13_iwxgu"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_166jt"]
 radius = 6.92308
@@ -32,7 +31,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_vy1nh")]
+"values": [ExtResource("2_qjdcx")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -408,7 +407,7 @@ script = ExtResource("1_r5yw5")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
-texture = ExtResource("3_vy1nh")
+texture = ExtResource("2_qjdcx")
 flip_h = true
 hframes = 10
 
@@ -451,6 +450,3 @@ script = ExtResource("6_q0xjo")
 
 [node name="EnemyKnockback" type="Node" parent="EnemyMovementStateMachine"]
 script = ExtResource("13_1pejj")
-
-[node name="EnemyFollow" type="Node" parent="EnemyMovementStateMachine"]
-script = ExtResource("13_iwxgu")
