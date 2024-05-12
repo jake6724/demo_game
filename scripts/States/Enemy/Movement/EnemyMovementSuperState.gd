@@ -1,5 +1,5 @@
 extends State
-class_name EnemySuperState
+class_name EnemyMovementSuperState
 
 # Find a way to make this set to an enemy by default 
 # so it isn't required to do manually in inspector

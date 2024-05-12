@@ -822,36 +822,36 @@ libraries = {
 "": SubResource("AnimationLibrary_3ei6m")
 }
 
-[node name="PlayerMovementStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="MovementStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("8_74gcg")
 initial_state = NodePath("PlayerIdle")
 
-[node name="PlayerIdle" type="Node" parent="PlayerMovementStateMachine"]
+[node name="PlayerIdle" type="Node" parent="MovementStateMachine"]
 script = ExtResource("14_cvqe0")
 
-[node name="PlayerRun" type="Node" parent="PlayerMovementStateMachine"]
+[node name="PlayerRun" type="Node" parent="MovementStateMachine"]
 script = ExtResource("15_6sd86")
 
-[node name="PlayerWalk" type="Node" parent="PlayerMovementStateMachine"]
+[node name="PlayerWalk" type="Node" parent="MovementStateMachine"]
 script = ExtResource("16_55gqv")
 
-[node name="PlayerActionStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="ActionStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("11_rm7js")
 initial_state = NodePath("PlayerInactive")
 
-[node name="PlayerInactive" type="Node" parent="PlayerActionStateMachine"]
+[node name="PlayerInactive" type="Node" parent="ActionStateMachine"]
 script = ExtResource("18_v7sk0")
 
-[node name="PlayerJab" type="Node" parent="PlayerActionStateMachine"]
+[node name="PlayerJab" type="Node" parent="ActionStateMachine"]
 script = ExtResource("19_ormix")
 
-[node name="PlayerForwardTilt" type="Node" parent="PlayerActionStateMachine"]
+[node name="PlayerForwardTilt" type="Node" parent="ActionStateMachine"]
 script = ExtResource("20_sqxkc")
 
-[node name="PlayerJump" type="Node" parent="PlayerActionStateMachine"]
+[node name="PlayerJump" type="Node" parent="ActionStateMachine"]
 script = ExtResource("21_dd1a0")
 
-[node name="PlayerForwardSmash" type="Node" parent="PlayerActionStateMachine"]
+[node name="PlayerForwardSmash" type="Node" parent="ActionStateMachine"]
 script = ExtResource("22_my1pe")
 
 [node name="LabelCurrentMovementState" type="Label" parent="."]
