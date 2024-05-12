@@ -1,5 +1,5 @@
 extends StateMachine
-class_name EnemyMovementStateMachine
+class_name EnemyActionStateMachine
 
 func _ready():
 	# Check through all children of 'StateMachine' node 
@@ -13,11 +13,17 @@ func _ready():
 	if initial_state:
 		initial_state.enter()
 		current_state = initial_state
-		
-	# Connect to enemy signals 
+
+	# Get enemy reference
 	enemy = get_tree().get_first_node_in_group("Enemy")
-	enemy.character_hurtbox_entered.connect(on_enemy_hurtbox_entered)
+	# Connect to player's 'player_ready' signal 
+	enemy.character_ready.connect(on_character_ready)
+
+func on_character_ready():
+	initialize_states()
 	
-func on_enemy_hurtbox_entered():
-	on_child_transition(current_state, "EnemyKnockback")
-	
+func initialize_states():
+	var state_to_initialize: State
+	for s in states:
+		state_to_initialize = states[s]
+		state_to_initialize.state_initialize()

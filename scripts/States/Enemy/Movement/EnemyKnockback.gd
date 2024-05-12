@@ -1,4 +1,4 @@
-extends EnemySuperState
+extends EnemyMovementSuperState
 class_name EnemyKnockback
 
 var knocked_frames
@@ -15,7 +15,6 @@ func enter():
 	enemy.velocity = enemy.lv
 
 func state_physics_update(_delta):
-	print(enemy.velocity)
 	if frame_counter != knocked_frames:
 		if enemy.knocked_right: # Attack hit this character to the right
 			#print(enemy.velocity.x - slowdown)

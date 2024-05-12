@@ -1,4 +1,4 @@
-extends EnemySuperState
+extends EnemyMovementSuperState
 class_name EnemyFollow
 
 # TODO: Resolve falling/stuck to platform issues.

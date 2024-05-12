@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dnirn71nq7d6u"]
+[gd_scene load_steps=25 format=3 uid="uid://dnirn71nq7d6u"]
 
 [ext_resource type="Script" path="res://scripts/EnemySuperClass.gd" id="1_r5yw5"]
 [ext_resource type="Texture2D" uid="uid://ewmcw5e1ie5g" path="res://assets/player/player run 48x48.png" id="2_qjdcx"]
@@ -14,7 +14,6 @@
 [ext_resource type="Script" path="res://scripts/States/Enemy/Movement/EnemyKnockback.gd" id="13_1pejj"]
 [ext_resource type="Script" path="res://scripts/States/Enemy/Movement/EnemyFollow.gd" id="13_iwxgu"]
 [ext_resource type="Script" path="res://scripts/States/Enemy/EnemyActionStateMachine.gd" id="14_o0txy"]
-[ext_resource type="Script" path="res://scripts/States/Enemy/Actions/EnemyInactive.gd" id="15_4blbb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_166jt"]
 radius = 6.92308
@@ -422,8 +421,6 @@ script = ExtResource("3_8c6ml")
 position = Vector2(0.769231, -15.3846)
 shape = SubResource("CapsuleShape2D_166jt")
 
-[node name="CombatHitboxes" type="Node2D" parent="Sprite2D"]
-
 [node name="PhysicsHitbox" type="CollisionShape2D" parent="."]
 visible = false
 position = Vector2(0, -14.5)
@@ -434,6 +431,17 @@ shape = SubResource("RectangleShape2D_0ij7x")
 libraries = {
 "": SubResource("AnimationLibrary_75tqo")
 }
+
+[node name="LabelCurrentState" type="Label" parent="."]
+offset_left = -95.3846
+offset_top = -44.6154
+offset_right = 95.6154
+offset_bottom = -28.6154
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("9_7rdr6")
+theme_override_font_sizes/font_size = 16
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="MovementStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("10_yv47a")
@@ -448,33 +456,5 @@ script = ExtResource("13_1pejj")
 [node name="EnemyFollow" type="Node" parent="MovementStateMachine"]
 script = ExtResource("13_iwxgu")
 
-[node name="ActionStateMachine" type="Node2D" parent="." node_paths=PackedStringArray("initial_state")]
+[node name="EnemyActionStateMachine" type="Node2D" parent="."]
 script = ExtResource("14_o0txy")
-initial_state = NodePath("EnemyInactive")
-
-[node name="EnemyInactive" type="Node" parent="ActionStateMachine"]
-script = ExtResource("15_4blbb")
-
-[node name="LabelCurrentMovementState" type="Label" parent="."]
-visible = false
-offset_left = -96.0
-offset_top = -64.0
-offset_right = 95.0
-offset_bottom = -48.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("9_7rdr6")
-theme_override_font_sizes/font_size = 16
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LabelCurrentActionState" type="Label" parent="."]
-visible = false
-offset_left = -96.0
-offset_top = -48.0
-offset_right = 95.0
-offset_bottom = -32.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("9_7rdr6")
-theme_override_font_sizes/font_size = 16
-horizontal_alignment = 1
-vertical_alignment = 1

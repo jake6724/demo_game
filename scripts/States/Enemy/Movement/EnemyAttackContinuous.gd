@@ -1,4 +1,4 @@
-extends EnemySuperState
+extends EnemyMovementSuperState
 class_name EnemyAttackContinuous
 
 func state_physics_update(_delta: float):

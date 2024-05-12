@@ -2,7 +2,7 @@ extends PlayerMovementSuperState
 class_name PlayerIdle
 
 func _ready():
-	# Used in state_logger() (part of base State class)
+	# Used in state_logger() (part of base state class)
 	state_name = "PlayerIdle"
 	animation = "idle"
 	animation2 = "falling"

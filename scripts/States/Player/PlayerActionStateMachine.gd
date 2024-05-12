@@ -17,9 +17,9 @@ func _ready():
 	# Get player reference
 	player = get_tree().get_first_node_in_group("Player")
 	# Connect to player's 'player_ready' signal 
-	player.player_ready.connect(on_player_ready)
+	player.character_ready.connect(on_character_ready)
 
-func on_player_ready():
+func on_character_ready():
 	initialize_states()
 	
 func initialize_states():

@@ -1,4 +1,4 @@
-extends EnemySuperState
+extends EnemyMovementSuperState
 class_name EnemyIdle
 
 func _ready():
