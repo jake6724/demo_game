@@ -6,9 +6,6 @@ func _ready():
 	state_name = "PlayerInactive"
 
 func state_physics_update(_delta):
-	# Reset action state values 
-	player.is_active = false
-	
 	# Reset jump. This is done here and not PlayerSuperClass _p_p
 	# because it will get reset on same frame as first jump
 	if player.is_on_floor():  

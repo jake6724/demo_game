@@ -432,6 +432,7 @@ tracks/4/keys = {
 [sub_resource type="Animation" id="Animation_joc0q"]
 resource_name = "jump"
 length = 0.3
+step = 0.01
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -479,6 +480,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [0, 0, 0]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ActionStateMachine/PlayerJump")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_to_inactive"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_gmkul"]
@@ -532,6 +547,20 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3, 4, 5]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("../ActionStateMachine/PlayerJump")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.01),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"go_to_inactive"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_a0rtk"]
@@ -855,7 +884,6 @@ script = ExtResource("21_dd1a0")
 script = ExtResource("22_my1pe")
 
 [node name="LabelCurrentMovementState" type="Label" parent="."]
-visible = false
 offset_left = -96.0
 offset_top = -64.0
 offset_right = 95.0
@@ -867,7 +895,6 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="LabelCurrentActionState" type="Label" parent="."]
-visible = false
 offset_left = -96.0
 offset_top = -48.0
 offset_right = 95.0
