@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://bulypia7wscb3"]
+
+[ext_resource type="Texture2D" uid="uid://cckal457r5dif" path="res://assets/golem/arm_projectile.png" id="1_rvhiw"]
+[ext_resource type="Script" path="res://scripts/spear.gd" id="1_u0vvx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_y3jyl"]
+size = Vector2(35, 11)
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
+scale = Vector2(1.5, 1.5)
+script = ExtResource("1_u0vvx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -0.5)
+shape = SubResource("RectangleShape2D_y3jyl")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-28, 12)
+texture = ExtResource("1_rvhiw")

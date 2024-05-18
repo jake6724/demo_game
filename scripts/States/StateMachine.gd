@@ -24,7 +24,7 @@ func _process(delta):
 func _physics_process(delta):
 	if  current_state:
 		current_state.state_physics_update(delta)
-		print("Current State:", current_state)
+		#print("Current State:", current_state)
 		
 func on_child_transition(state, new_state_name):
 	# Only transition if the state that called this function

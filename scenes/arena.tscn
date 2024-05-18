@@ -32,7 +32,6 @@ texture = ExtResource("5_88cpg")
 centered = false
 
 [node name="Stage_reference" type="Sprite2D" parent="."]
-visible = false
 z_index = -11
 texture = ExtResource("6_3u077")
 centered = false
@@ -45,4 +44,4 @@ centered = false
 position = Vector2(256, 232)
 
 [node name="EnemySuperclass" parent="." instance=ExtResource("9_rx4nk")]
-position = Vector2(600, 216)
+position = Vector2(857, 171)

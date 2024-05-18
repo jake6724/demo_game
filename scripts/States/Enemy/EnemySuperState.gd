@@ -4,24 +4,12 @@ class_name EnemySuperState
 @export var enemy : EnemySuperClass
 var player : player_superclass
 
-# Used for is_player_in_range(), and follow
-var x_distance_max = 30
-var x_distance_offset = 15
-var y_distance_max = -50
-var x_target_reached : bool = false 
-var y_target_reached : bool = false 
-var player_in_range : bool
 
 func enter():
 	# Load reference to player 
 	player = get_tree().get_first_node_in_group("Player")
 
-func is_player_in_range(): # Eventually account for hit box sizes
+func get_player_pos(): # Eventually account for hit box sizes
 	var distance2D = player.global_position - enemy.global_position
 	
-	if abs(distance2D.x) > x_distance_max:
-		return false 
-	elif distance2D.y < y_distance_max:
-		return false 
-	else:
-		return true 
+	return player.global_position

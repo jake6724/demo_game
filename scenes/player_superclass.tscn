@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" path="res://scripts/player_superclass.gd" id="1_cj338"]
 [ext_resource type="Texture2D" uid="uid://cxffg8sehfltx" path="res://assets/textures/free_knight/_Idle.png" id="1_pn11e"]
-[ext_resource type="Texture2D" uid="uid://b8lo3hhcsq8y1" path="res://assets/textures/free_knight/_Dash.png" id="2_rfywk"]
 [ext_resource type="Texture2D" uid="uid://b60ygmrf7hmby" path="res://assets/textures/free_knight/_Fall.png" id="3_c27x0"]
 [ext_resource type="Texture2D" uid="uid://ce55v5fbrjys5" path="res://assets/textures/free_knight/_Jump.png" id="4_h0834"]
 [ext_resource type="Texture2D" uid="uid://dp3tti48hn4nr" path="res://assets/textures/free_knight/_Run.png" id="5_hdnfv"]
-[ext_resource type="Texture2D" uid="uid://bco6ppodhog65" path="res://assets/textures/free_knight/_Attack2NoMovement.png" id="6_x7kqb"]
+[ext_resource type="Texture2D" uid="uid://dfdnebjm7xbhv" path="res://assets/textures/free_knight/_Roll.png" id="6_m08gb"]
+[ext_resource type="Texture2D" uid="uid://37dxxbj77m5l" path="res://assets/textures/free_knight/_Attack.png" id="7_qmqse"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cy0k8"]
 size = Vector2(17, 38)
@@ -62,9 +62,10 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_nvhsy"]
-resource_name = "dash"
-loop_mode = 2
+[sub_resource type="Animation" id="Animation_iemog"]
+resource_name = "attack"
+length = 0.2
+step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -75,7 +76,43 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_rfywk")]
+"values": [ExtResource("7_qmqse")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.1, 0.15),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_2q7rc"]
@@ -238,6 +275,59 @@ tracks/3/keys = {
 "values": [0, 1, 2]
 }
 
+[sub_resource type="Animation" id="Animation_ky7qs"]
+resource_name = "roll"
+length = 0.4
+step = 0.03
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("6_m08gb")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.03, 0.06, 0.09, 0.12, 0.15, 0.18, 0.21, 0.24, 0.27, 0.3, 0.33),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+}
+
 [sub_resource type="Animation" id="Animation_5f213"]
 resource_name = "run"
 loop_mode = 1
@@ -290,67 +380,15 @@ tracks/3/keys = {
 "values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 }
 
-[sub_resource type="Animation" id="Animation_hv3w7"]
-resource_name = "side_tilt"
-length = 0.7
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("6_x7kqb")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [6]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.2, 0.3, 0.4, 0.5, 0.6),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kwedl"]
 _data = {
 "RESET": SubResource("Animation_xdjhu"),
-"dash": SubResource("Animation_nvhsy"),
+"attack": SubResource("Animation_iemog"),
 "fall": SubResource("Animation_2q7rc"),
 "idle": SubResource("Animation_lstu8"),
 "jump": SubResource("Animation_0x0ja"),
-"run": SubResource("Animation_5f213"),
-"side_tilt": SubResource("Animation_hv3w7")
+"roll": SubResource("Animation_ky7qs"),
+"run": SubResource("Animation_5f213")
 }
 
 [sub_resource type="GDScript" id="GDScript_2rxxq"]
