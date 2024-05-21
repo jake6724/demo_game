@@ -28,7 +28,8 @@ func state_move():
 			transition.emit(self, "PlayerIdle")
 	# Apply movement in both conditions (grounded/in_air) if inactive
 	else:
-		player.velocity.x = player.x_input * player.walk_speed
+		#player.velocity.x = player.x_input * player.walk_speed
+		player.velocity.x = player.walk_speed * sign(player.x_input)
 	
 func state_animate():
 	if not player.is_active: 

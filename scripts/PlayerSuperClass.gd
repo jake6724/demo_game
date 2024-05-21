@@ -5,13 +5,13 @@ func set_character_stats():
 	# Movement
 	jump_counter = 0
 	jump_max = 2 # How many jumps character has 
-	run_speed = 300.0 
-	walk_speed = 200.0
-	run_threshold = .8 # When to transition from walk to run
-	air_speed = 250.0
-	jump_velocity = -400.0
-	fast_fall_velocity= 20.0
-	gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+	run_speed = 500.0 
+	walk_speed = 150.0
+	run_threshold = 0.3 # When to transition from walk to run
+	air_speed = 300.0
+	jump_velocity = -500.0
+	fast_fall_velocity= 10.0
+	gravity = ProjectSettings.get_setting("physics/2d/default_gravity") * 2
 	# Combat
 	health = 0.0
 	weight = 100.0

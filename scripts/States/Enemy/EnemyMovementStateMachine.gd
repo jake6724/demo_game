@@ -2,6 +2,7 @@ extends StateMachine
 class_name EnemyMovementStateMachine
 
 func _ready():
+	return
 	# Check through all children of 'StateMachine' node 
 	# and add to states dict if child is of 'State' class
 	for child in get_children():

@@ -1,7 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://c13nukupc5xsd"]
+[gd_scene load_steps=4 format=3 uid="uid://c13nukupc5xsd"]
 
 [ext_resource type="PackedScene" uid="uid://udluj6eeolgk" path="res://scenes/PlayerSuperClass.tscn" id="1_7iqtu"]
 [ext_resource type="Script" path="res://scripts/PlayerMain.gd" id="2_ge1fj"]
+[ext_resource type="Script" path="res://scripts/States/Player/Movement/PlayerDodge.gd" id="3_gixq7"]
 
 [node name="CharacterBody2D" instance=ExtResource("1_7iqtu")]
 script = ExtResource("2_ge1fj")
+
+[node name="PlayerDodge" type="Node" parent="MovementStateMachine" index="3"]
+script = ExtResource("3_gixq7")
