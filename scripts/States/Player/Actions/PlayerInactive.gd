@@ -21,8 +21,6 @@ func state_physics_update(_delta):
 			else:
 				transition.emit(self, "PlayerJab")
 
-	# Aerial jab actions go here 
-	
 	# Grounded smash actions
 	if Input.is_action_just_pressed("forward_smash_right"):
 		# Manually set correction player direction

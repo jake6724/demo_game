@@ -11,6 +11,7 @@ class_name GameCharacter
 @onready var action_sm = $ActionStateMachine
 @onready var label_current_movement_state = $LabelCurrentMovementState
 @onready var label_current_action_state = $LabelCurrentActionState
+@onready var platform_hitbox = $PlatformHitbox
 
 # Hitbox nodes 
 var hitbox_collisions: Array
