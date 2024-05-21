@@ -17,13 +17,13 @@ func check_for_transitions():
 	# If the player is inactive, always check for transitions
 	if player.is_active:
 		if player.current_condition == player.condition.IN_AIR:
-			if abs(player.x_input) < player.run_threshold and abs(player.x_input) > 0:
+			if abs(player.x_input) < player.run_threshold and abs(player.x_input) > player.walk_threshold:
 				transition.emit(self, "PlayerWalk")
 			
 			elif abs(player.x_input) >= player.run_threshold:
 				transition.emit(self, "PlayerRun")
 	else:
-		if abs(player.x_input) < player.run_threshold and abs(player.x_input) > 0:
+		if abs(player.x_input) < player.run_threshold and abs(player.x_input) > player.walk_threshold:
 				transition.emit(self, "PlayerWalk")
 			
 		elif abs(player.x_input) >= player.run_threshold:

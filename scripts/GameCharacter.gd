@@ -40,12 +40,15 @@ var jump_counter: int
 var jump_max: int # How many jumps character has 
 var run_speed: float
 var walk_speed:float
+var walk_threshold: float 
 var run_threshold: float
 var air_speed: float
 var jump_velocity: float
 var fast_fall_velocity:float
 var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 #Combat
+var ftilt_threshold: float
+var utilt_threshold: float
 var health: float
 var weight: float
 var knockback_resistance: float

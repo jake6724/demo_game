@@ -7,8 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://drjxq6wplgtuq" path="res://assets/backgrounds/stage.PNG" id="5_nnk6v"]
 [ext_resource type="PackedScene" uid="uid://plndvi2whv5" path="res://scenes/BasePlatform.tscn" id="6_s8txk"]
 [ext_resource type="PackedScene" uid="uid://t67wocrvvx70" path="res://scenes/HUD.tscn" id="7_e5861"]
-[ext_resource type="PackedScene" uid="uid://c13nukupc5xsd" path="res://scenes/PlayerMain.tscn" id="8_2y11k"]
 [ext_resource type="PackedScene" uid="uid://dnirn71nq7d6u" path="res://scenes/EnemySuperClass.tscn" id="9_0bpdx"]
+[ext_resource type="PackedScene" uid="uid://udluj6eeolgk" path="res://scenes/PlayerSuperClass.tscn" id="9_bxpi4"]
 
 [node name="Arena" type="Node2D"]
 script = ExtResource("1_jl44a")
@@ -37,12 +37,13 @@ z_index = -11
 texture = ExtResource("5_nnk6v")
 centered = false
 
-[node name="BasePlatform" parent="." instance=ExtResource("6_s8txk")]
-
 [node name="HUD" parent="." instance=ExtResource("7_e5861")]
 
-[node name="PlayerMain" parent="." instance=ExtResource("8_2y11k")]
-position = Vector2(256, 232)
-
 [node name="EnemyMain" parent="." instance=ExtResource("9_0bpdx")]
+visible = false
 position = Vector2(467, 349)
+
+[node name="BasePlatform" parent="." instance=ExtResource("6_s8txk")]
+
+[node name="PlayerMain" parent="." instance=ExtResource("9_bxpi4")]
+position = Vector2(354, 0)

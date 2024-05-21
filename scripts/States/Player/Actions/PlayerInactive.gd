@@ -10,20 +10,41 @@ func state_physics_update(_delta):
 	# because it will get reset on same frame as first jump
 	if player.is_on_floor():  
 		player.jump_counter = 0
-	
-	if Input.is_action_just_pressed("forward_tilt"):
-		transition.emit(self, "PlayerForwardTilt")
 		
+	# Grounded jab actions
 	if Input.is_action_just_pressed("jab"):
-		transition.emit(self, "PlayerJab")
+		if player.current_condition == player.condition.GROUNDED:
+			if abs(player.x_input) > player.ftilt_threshold:
+				transition.emit(self, "PlayerForwardTilt")
+			elif player.y_input < player.utilt_threshold:
+				transition.emit(self, "PlayerUpTilt")
+			else:
+				transition.emit(self, "PlayerJab")
+
+	# Aerial jab actions go here 
 	
-	if Input.is_action_just_pressed("forward_smash"):
-		transition.emit(self, "PlayerForwardSmash")
-		
+	# Grounded smash actions
+	if Input.is_action_just_pressed("forward_smash_right"):
+		# Manually set correction player direction
+		player.set_character_direction(1)
+		if player.current_condition == player.condition.GROUNDED:	
+			transition.emit(self, "PlayerForwardSmash")
+			
+	if Input.is_action_just_pressed("forward_smash_left"):
+		# Manually set correction player direction
+		player.set_character_direction(-1)
+		if player.current_condition == player.condition.GROUNDED:	
+			transition.emit(self, "PlayerForwardSmash")
+
+	# Jump
 	if Input.is_action_just_pressed("move_up"):
 		# Only allow to enter jump if jump count valid 
 		if player.jump_counter < player.jump_max:
 			transition.emit(self, "PlayerJump")
+
+	# Move down 
+	if Input.is_action_pressed("move_down"):
+		transition.emit(self, "PlayerDown")
 
 func run_player_action():
 	pass

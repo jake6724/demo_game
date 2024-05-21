@@ -1,9 +1,9 @@
 extends PlayerActionSuperState
-class_name PlayerForwardTilt
+class_name PlayerUpTilt
 
 func _ready():
-	state_name = "PlayerForwardTilt"
-	animation = "forward_tilt_1"
+	state_name = "PlayerUpTilt"
+	animation = "up_tilt"
 	 
 func enter():
 	player_action_setup()
