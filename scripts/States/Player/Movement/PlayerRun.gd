@@ -22,7 +22,6 @@ func check_for_transitions():
 		transition.emit(self, "PlayerIdle")
 	
 func state_move():
-	# Check if action is running
 	if player.is_active:
 		# Only apply movement if character is in the air
 		if player.current_condition == player.condition.IN_AIR:

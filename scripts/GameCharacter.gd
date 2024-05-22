@@ -39,6 +39,7 @@ var current_action_state: State
 #Movement
 var jump_counter: int 
 var jump_max: int # How many jumps character has 
+var jump_threshold: float 
 var run_speed: float
 var walk_speed:float
 var walk_threshold: float 

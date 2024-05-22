@@ -35,8 +35,8 @@ func state_physics_update(_delta):
 			transition.emit(self, "PlayerForwardSmash")
 
 	# Jump
-	if Input.is_action_just_pressed("move_up"):
-		# Only allow to enter jump if jump count valid 
+	if Input.is_action_just_pressed("move_up") and player.y_input <= player.jump_threshold:
+		# Only allow to enter jump if jump count valid
 		if player.jump_counter < player.jump_max:
 			transition.emit(self, "PlayerJump")
 

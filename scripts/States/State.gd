@@ -4,6 +4,7 @@ class_name State
 var animation = "RESET"
 var animation2
 var animation3
+var animation4
 
 signal transition 
 

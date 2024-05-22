@@ -5,12 +5,13 @@ func set_character_stats():
 	# Movement
 	jump_counter = 0
 	jump_max = 2 # How many jumps character has 
+	jump_velocity = -400.0
+	jump_threshold = -0.2
 	run_speed = 300.0 
 	walk_speed = 200.0
 	walk_threshold = .5
 	run_threshold = .8 # When to transition from walk to run
 	air_speed = 250.0
-	jump_velocity = -400.0
 	fast_fall_velocity= 3
 	gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 	# Combat
@@ -26,10 +27,11 @@ func set_character_stats():
 
 func _physics_process(delta):
 	# print("0X: ", Input.get_axis("move_left", "move_right"))
-	#print("0Y: ", Input.get_axis("move_up", "move_down"))
+	# print("0Y: ", Input.get_axis("move_up", "move_down"))
 	#print("1X: ", Input.get_axis("forward_smash_left", "forward_smash_right" ))
-	# Get player input for movement states
 	print(is_active)
+	
+	# Get player input for movement states
 	x_input = Input.get_axis("move_left", "move_right")
 	y_input = Input.get_axis("move_up", "move_down")
 	
