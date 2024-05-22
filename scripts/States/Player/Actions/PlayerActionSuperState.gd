@@ -15,7 +15,7 @@ var angle: float
 
 	
 func enter():
-		pass
+	pass
 		
 func get_player_ref():
 	player = get_tree().get_first_node_in_group("Player")
@@ -29,7 +29,7 @@ func player_action_setup():
 
 func run_player_action():
 	player.ap.play(animation)
-	
+
 func on_animation_finished(_anim_name):
 	player.is_active = false
 	transition.emit(self, "PlayerInactive")

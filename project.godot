@@ -105,7 +105,8 @@ jab={
 2d_physics/layer_5="PlayerHurtboxes"
 2d_physics/layer_6="EnemyHitboxes"
 2d_physics/layer_7="EnemyHurtboxes"
-2d_physics/layer_8="Platforms"
+2d_physics/layer_8="GameCharacterPlatformHitbox"
+2d_physics/layer_9="PlatformHitbox"
 
 [rendering]
 

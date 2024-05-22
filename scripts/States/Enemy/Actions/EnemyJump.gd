@@ -1,4 +1,4 @@
-extends EnemySuperState
+extends EnemyActionSuperState
 class_name EnemyJump
 
 func state_physics_update(_delta):

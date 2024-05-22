@@ -11,7 +11,7 @@ func set_character_stats():
 	run_threshold = .8 # When to transition from walk to run
 	air_speed = 250.0
 	jump_velocity = -400.0
-	fast_fall_velocity= 20.0
+	fast_fall_velocity= 3
 	gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
 	# Combat
 	ftilt_threshold = .01
@@ -19,12 +19,17 @@ func set_character_stats():
 	health = 0.0
 	weight = 100.0
 	knockback_resistance = 1.0 
+	# Set layers
+	self.set_collision_layer_value(1, true)
+	self.set_collision_mask_value(3, true)
+	self.set_collision_mask_value(9, true)
 
 func _physics_process(delta):
 	# print("0X: ", Input.get_axis("move_left", "move_right"))
 	#print("0Y: ", Input.get_axis("move_up", "move_down"))
 	#print("1X: ", Input.get_axis("forward_smash_left", "forward_smash_right" ))
 	# Get player input for movement states
+	print(is_active)
 	x_input = Input.get_axis("move_left", "move_right")
 	y_input = Input.get_axis("move_up", "move_down")
 	
@@ -42,7 +47,8 @@ func _physics_process(delta):
 		velocity.y += gravity * delta
 	
 	# Add fast fall ability (only after player has hit jump peak) 
-	if Input.is_action_just_pressed("move_down") and not is_on_floor() and velocity.y >= 0:
-		velocity.y += gravity * delta * fast_fall_velocity
-		
+	# if Input.is_action_just_pressed("move_down") and not is_on_floor() and velocity.y >= 0:
+	# 	velocity.y += gravity * delta * fast_fall_velocity
+	# 	print(velocity.y)
+
 	move_and_slide()

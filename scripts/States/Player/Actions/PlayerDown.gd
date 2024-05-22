@@ -11,20 +11,26 @@ func _ready():
 
 func enter():
 	player_action_setup()
-	# run_player_action()
+	player.set_collision_mask_value(9, false)
+
+func exit(): 
+	player.set_collision_mask_value(9, true)
 	
 func state_physics_update(_delta):
+	# TODO: This doesn't feel right
+	if not player.is_on_floor():
+		player.velocity.y += player.gravity * get_process_delta_time() * player.fast_fall_velocity
+	
+	# Continue to run state actions until down is released
 	if Input.is_action_pressed("move_down"):
 		run_player_action()
 	else:
+		# Reset is_active here manually. This is generally handled by on_animation_finished()
+		# But since we want to hold the action do not use
+		player.is_active = false
 		transition.emit(self, "PlayerInactive")
 	
-func player_action_setup():
-	player.is_active = true
-	
-func run_player_action():
-	# player.platform_hitbox.get_child(0).disable = true
-
+func run_player_action():	
 	# Determine which down animation to play 
 	if player.current_condition == player.condition.GROUNDED:
 		player.ap.play(animation)
@@ -32,6 +38,5 @@ func run_player_action():
 		player.ap.play(animation2)
 		
 func on_animation_finished(_anim_name):
-	player.is_active = false
-	# Remove the transition to inactive, because this
-	# action uses go_to_inactive() (Can find in animation player)
+	# Don't use for this action because we want to hold the position until player releases
+	pass
