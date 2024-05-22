@@ -26,10 +26,10 @@ func set_character_stats():
 	self.set_collision_mask_value(9, true)
 
 func _physics_process(delta):
-	# print("0X: ", Input.get_axis("move_left", "move_right"))
-	# print("0Y: ", Input.get_axis("move_up", "move_down"))
+	print("0X: ", Input.get_axis("move_left", "move_right"))
+	print("0Y: ", Input.get_axis("move_up", "move_down"))
 	#print("1X: ", Input.get_axis("forward_smash_left", "forward_smash_right" ))
-	print(is_active)
+	# print(is_active)
 	
 	# Get player input for movement states
 	x_input = Input.get_axis("move_left", "move_right")
